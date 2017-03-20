@@ -1,0 +1,27 @@
+main {
+  margin: 10px 0 0 40px;
+}
+
+.main-title {
+  color: #0007ea;
+}
+
+.subtitle {
+  color: #eca309;
+}
+
+.main-list {
+  color: #0300f7;
+}
+
+.ul-sublist {
+  color: #000;
+}
+
+.ol-sublist {
+  color: #000;
+}
+
+.apple {
+  color: #d40f19;
+}

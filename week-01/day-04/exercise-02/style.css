@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+
+.colored-box {
+  padding: 52px 0;
+
+}
+
+.box-container {
+  border: 16px solid #4285f4;
+  margin: 2px;
+  padding: 0;
+  width: 348px
+}
+.text-in-box {
+  color: #fff;
+  font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+.first-box {
+  background-color: #e67676;
+}
+
+.second-box {
+  background-color: #f2f062;
+}
+
+.third-box {
+  background-color: #a9e6e6;
+}
+
+.fourth-box {
+  background-color: #7692e4;
+}

@@ -1,0 +1,35 @@
+.colored-box {
+  background-image: url("../images/duck.png");
+  color: #fff;
+  font-family: Courier;
+  font-size: 16px;
+  margin: 5px;
+  padding: 20px 40px;
+  text-align: center;
+  width: 200px;
+}
+
+.first-box {
+  background-color: #ff6347;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.second-box {
+  background-color: #643579;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.third-box {
+  background-color: #808080;
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+p {
+  margin: 0;
+}

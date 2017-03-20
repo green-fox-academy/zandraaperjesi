@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+}
+
+.box-container {
+  border: 16px solid #4285f4;
+  margin: 3px;
+  padding: 0;
+  width: 348px;
+}
+
+.first-container {
+  margin: 2px 3px 5px 3px;
+}
+
+.colored-box {
+  margin: 0;
+  padding: 51px;
+  text-align: center;
+}
+
+.first-box {
+  background-color: #e67676;
+}
+
+.second-box {
+  background-color: #a9e6e6;
+}
+
+.text-in-box {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  margin: 0;
+}

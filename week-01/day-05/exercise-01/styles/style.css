@@ -1,0 +1,20 @@
+.text-block {
+  border-top: 2px solid #000;
+  font-size: 18px;
+  padding: 5px;s
+  width: 300px;
+}
+
+article {
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  width: 310px;
+}
+
+section:first-child {
+  border: none;
+}
+
+.text-block:hover {
+  background-color: #ec6842;
+}

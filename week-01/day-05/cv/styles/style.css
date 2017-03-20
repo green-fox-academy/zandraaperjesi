@@ -1,0 +1,112 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-color: #222;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 0 100px;
+}
+
+hr {
+  background-color: #222;
+  border: none;
+  height: 4px;
+}
+
+ul li {
+  list-style-type: square;
+}
+
+.achivements p {
+  font-size: .8em;
+}
+
+.experience li,
+.training li,
+.personal li{
+  font-size: 0.8em;
+  line-height: 2em;
+}
+
+.header {
+  background-image: url("../banner.png");
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  margin: 0 50px;
+  max-width: auto;
+  padding: 0;
+}
+
+.header-textbox {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  line-height: 1em;
+  margin: 100 auto;
+  position: absolute;
+  top: 270px;
+  width: 800px;
+}
+
+.header-textbox p,
+.header-textbox h1 {
+  margin: 0;
+}
+
+.intro {
+  line-height: 1.7em;
+}
+
+.intro-start {
+  font-weight: bolder;
+}
+
+.quote-box {
+  background-color: #444;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  margin: 50px 50px;
+  padding: 20px;
+  text-align: left;
+}
+
+.quote-box p::before {
+  color: #fff;
+  content: "“";
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.1em;
+  vertical-align: -0.4em;
+}
+
+.quote-box p {
+  font-size: 52px;
+  line-height: 1.5em;
+  margin: 0px;
+}
+
+.section-title {
+  margin: 50px 0;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  line-height: .2em;
+  margin: 50px 0 10px;
+}
+
+.section-subtitle h4 {
+  font-style: italic;
+}
+
+.section-subtitle h3 {
+  font-size: 1.3em;
+}
