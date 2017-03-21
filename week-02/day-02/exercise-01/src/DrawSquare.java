@@ -9,13 +9,13 @@ public class DrawSquare {
     System.out.println("Give me a number: ");
     int n = myScanner.nextInt();
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < (n + 1); i++) {
       if (i == 0) {
         for (int j = 0; j < n; j++) {
           System.out.print("%");
         }
       }
-      else if (i == (n - 1)) {
+      else if (i == (n)) {
         for (int k = 0; k < n; k++) {
           System.out.print("%");
         }
