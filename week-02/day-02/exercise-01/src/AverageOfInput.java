@@ -6,18 +6,13 @@ import java.util.Scanner;
 public class AverageOfInput {
   public static void main(String[] args) {
     Scanner myScanner = new Scanner(System.in);
-    System.out.println("Give me an int:");
-    int first = myScanner.nextInt();
-    System.out.println("Give me an int:");
-    int second = myScanner.nextInt();
-    System.out.println("Give me an int:");
-    int third = myScanner.nextInt();
-    System.out.println("Give me an int:");
-    int fourth = myScanner.nextInt();
-    System.out.println("Give me an int:");
-    int fifth = myScanner.nextInt();
+    int sum = 0;
 
-    int sum = first + second + third + fourth + fifth;
+    for (int i = 0; i < 5; i++) {
+      System.out.println("Give me an int:");
+      sum += myScanner.nextInt();
+    }
+
     double average = ((double) sum) / 5;
     System.out.println("Sum: " + sum + ", Average: " + average);
   }
