@@ -11,8 +11,10 @@ public class Printer {
 
     String[] toPrint = new String[linesToPrint];
 
+    myScanner.nextLine();
+
     for (int i = 0; i < linesToPrint; i++) {
-      System.out.println("Line " + i + 1 + " please:");
+      System.out.println("Line " + (i + 1) + " please:");
       toPrint[i] = myScanner.nextLine();
     }
 
