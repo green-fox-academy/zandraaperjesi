@@ -6,7 +6,12 @@ import java.util.Scanner;
 public class Sum {
   public static void main(String[] args) {
 
-    System.out.println(sum(10));
+    Scanner myScanner = new Scanner(System.in);
+
+    System.out.println("Give me a number to sum until: ");
+    int numGiven = myScanner.nextInt();
+
+    System.out.println("The sum is: " + sum(numGiven));
   }
 
   private static int sum(int sumTill) {
