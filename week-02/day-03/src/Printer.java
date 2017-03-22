@@ -6,14 +6,25 @@ import java.util.Scanner;
 public class Printer {
   public static void main(String[] args) {
     Scanner myScanner = new Scanner(System.in);
-    System.out.println("What should I print?");
-    String printThis = myScanner.nextLine();
+    System.out.println("How many lines do you want to print?");
+    int linesToPrint = myScanner.nextInt();
 
-    printer(printThis);
+    String[] toPrint = new String[linesToPrint];
+
+    for (int i = 0; i < linesToPrint; i++) {
+      System.out.println("Line " + i + 1 + " please:");
+      toPrint[i] = myScanner.nextLine();
+    }
+
+    printer(toPrint);
   }
 
-  private static void printer(String toPrint) {
-    System.out.println(toPrint);
+  private static void printer(String... toPrint) {
+
+    for (String print : toPrint) {
+      System.out.println(print);
+    }
+
   }
 }
 // - Create a function called `printer`
