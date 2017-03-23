@@ -12,7 +12,7 @@ public class AppendLetter {
     }
 
     System.out.println(far);
-  }  
+  }
 }
 
 // Add "a" to every string in the far list.
