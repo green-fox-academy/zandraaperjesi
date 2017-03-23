@@ -14,7 +14,19 @@ public class ElementFinder {
     else {
       System.out.println("Noooooo");
     }
-    
+
+    boolean found = false;
+    for (int i = 0; i < arrayList.size(); i++) {
+      if (arrayList.get(i) == 7) {
+        found = true;
+      }
+    }
+    if (found) {
+      System.out.println("Hoorray");
+    }
+    else {
+      System.out.println("Noooooo");
+    }
   }
 }
 
