@@ -61,6 +61,21 @@ public class StudentCounter {
     }
     System.out.println("have more than 4 candies.");
 
+
+    double ageSum = 0;
+
+    for (int i = 0; i < map.size(); i++) {
+      if ((Integer)map.get(i).get("candies") < 5) {
+        if (map.get(i).get("age") instanceof Double) {
+          ageSum += (Double)map.get(i).get("age");
+        }
+        if (map.get(i).get("age") instanceof Integer) {
+          ageSum += (Integer)map.get(i).get("age");
+        }
+      }
+    }
+    System.out.println("The sum of the age of students with less than 5 candies is: " + ageSum);
+
     // Display the following things:
     //  - Who has got more candies than 4 candies
     //  - Sum the age of people who have lass than 5 candies
