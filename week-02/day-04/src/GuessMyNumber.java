@@ -11,14 +11,22 @@ public class GuessMyNumber {
 
     System.out.println("I will think of a random number and you will guess.");
     System.out.println("What is the highest number I can think of?");
-    while (!myScanner.hasNextInt()) {
+
+    int numberCap = 0;
+
+    do {
+      System.out.println("Please give me a positive number!");
+      if (myScanner.hasNextInt()) {
+        numberCap = myScanner.nextInt();
+      }
+      else {
         myScanner.next();
-        System.out.println("Please give me a number!");
-    }
-    int numberCap = myScanner.nextInt();
+      }
+    } while(numberCap <= 0);
+
     System.out.println("I've the number between 1-" + numberCap + ". You have 5 lives.");
     int  numToGuess = rand.nextInt(numberCap) + 1;
-    System.out.println(numToGuess);
+    //System.out.println(numToGuess);
     for (int i = 4; i >= 0; i--) {
       System.out.println("Your guess: ");
       while (!myScanner.hasNextInt()) {
@@ -35,10 +43,10 @@ public class GuessMyNumber {
         System.out.println("The number was: " + numToGuess + " :( . Better luck next time!");
       }
       else if (guess < numToGuess) {
-        System.out.println("Too low. You have " + i + " lives left.");
+        System.out.println("Too low. Guesses left: " + i);
       }
       else if (guess > numToGuess) {
-        System.out.println("Too high. You have " + i + " lives left.");
+        System.out.println("Too high. Guesses left: " + i);
       }
     }
   }
