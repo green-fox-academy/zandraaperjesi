@@ -10,7 +10,7 @@ public class Matchmaking {
     ArrayList<String> boys = new ArrayList<String>(Arrays.asList("Joe","Fred","Béla","Todd","Neef","Jeff"));
     ArrayList<String> order = new ArrayList<String>();
 
-    for (int i = 0; i < girls.size(); i+=2) {
+    for (int i = 0; i < girls.size() * 2; i+=2) {
       order.add(i, girls.get(i / 2));
       order.add(i + 1, boys.get(i / 2));
     }
