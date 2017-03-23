@@ -4,16 +4,16 @@
 public class Reverse {
   public static void main(String... args){
     String reversed = ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
-    reverser(reversed);
+    reversed = reverser(reversed);
     System.out.println(reversed);
   }
 
-  private static void reverser(String toReverse) {
+  private static String reverser(String toReverse) {
     String correctOrder = "";
     for (int i = 0; i < toReverse.length(); i++) {
       correctOrder += (toReverse.charAt(toReverse.length() - 1 - i));
     }
-    System.out.println(correctOrder);
+    return correctOrder;
   }
 }
 
