@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-
 /**
  * Created by zandraa on 3/23/2017.
  */
@@ -14,7 +13,6 @@ public class IsInList {
     else {
       System.out.println("false");
     }
-
   }
 }
 
