@@ -9,10 +9,31 @@ public class Calculator {
     System.out.println("Please type in the expression:");
     String userInput = myScanner.nextLine();
     String[] seperateInput = userInput.split(" ");
+    System.out.println(calculate(seperateInput));
   }
 
-  private static void calculate (String[] count) {
-    
+  private static int calculate (String[] count) {
+    int a = Integer.parseInt(count[1]);
+    int b = Integer.parseInt(count[2]);
+
+    if (count[0].equals("+")) {
+      return a + b;
+    }
+    else if (count[0].equals("-")) {
+      return a - b;
+    }
+    else if (count[0].equals("*")) {
+      return a * b;
+    }
+    else if (count[0].equals("/")) {
+      return a / b;
+    }
+    else if (count[0].equals("%")) {
+      return a % b;
+    }
+    else {
+      return 117;
+    }
   }
 }
 
