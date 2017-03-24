@@ -13,11 +13,16 @@ public class PalindromeSearcher {
     char[] slicedUpInput = inputString.toCharArray();
 
     for (int i = 2; i < slicedUpInput.length; i++) {
+      int slider = i;
       for (int j = 0; j < slicedUpInput.length - i; j++) {
-        if (slicedUpInput[i] == slicedUpInput[j]) {
+        if (slicedUpInput[slider] == slicedUpInput[j]) {
           System.out.println("found the same letters");
+          System.out.println(slicedUpInput[slider] + " " + slicedUpInput[j]);
         }
+        slider += 1;
+        //System.out.println(slider + " " + j + " " + i);
       }
+      //System.out.println("looped");
     }
   }
 }
