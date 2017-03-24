@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -5,6 +6,7 @@ import java.util.Scanner;
  */
 public class PalindromeSearcher {
   public static void main(String[] args) {
+    ArrayList<String> palindromes = new ArrayList<>();
     Scanner myScanner = new Scanner(System.in);
     System.out.println("Give me a line and I will show you the palindromes in it.");
     String inputString = myScanner.nextLine();
@@ -13,15 +15,15 @@ public class PalindromeSearcher {
       int slider = i;
       for (int j = 0; j < inputString.length() - i; j++) {
         if (inputString.charAt(slider) == inputString.charAt(j)) {
-          System.out.println("found the same letters");
-          System.out.println(inputString.charAt(slider) + " " + inputString.charAt(j));
-          String s = inputString.substring(j, slider + 1);
-          System.out.println(s);
-          isPalindrome(s);
+          String match = inputString.substring(j, slider + 1);
+          if (isPalindrome(match)) {
+            palindromes.add(match);
+          }
         }
         slider += 1;
       }
     }
+    System.out.println("Palindromes: " + palindromes);
   }
 
   private static boolean isPalindrome (String inOrder) {
