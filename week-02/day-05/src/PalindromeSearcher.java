@@ -10,19 +10,22 @@ public class PalindromeSearcher {
 
     String inputString = myScanner.nextLine();
 
-    char[] slicedUpInput = inputString.toCharArray();
-
-    for (int i = 2; i < slicedUpInput.length; i++) {
+    for (int i = 2; i < inputString.length(); i++) {
       int slider = i;
-      for (int j = 0; j < slicedUpInput.length - i; j++) {
-        if (slicedUpInput[slider] == slicedUpInput[j]) {
+      for (int j = 0; j < inputString.length() - i; j++) {
+        if (inputString.charAt(slider) == inputString.charAt(j)) {
           System.out.println("found the same letters");
-          System.out.println(slicedUpInput[slider] + " " + slicedUpInput[j]);
+          System.out.println(inputString.charAt(slider) + " " + inputString.charAt(j));
+          String s = inputString.substring(j, slider + 1);
+          System.out.println(s);
         }
         slider += 1;
         //System.out.println(slider + " " + j + " " + i);
       }
       //System.out.println("looped");
     }
+
   }
+
+  //private static boolean isPalindrome ();
 }
