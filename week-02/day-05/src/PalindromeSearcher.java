@@ -7,7 +7,6 @@ public class PalindromeSearcher {
   public static void main(String[] args) {
     Scanner myScanner = new Scanner(System.in);
     System.out.println("Give me a line and I will show you the palindromes in it.");
-
     String inputString = myScanner.nextLine();
 
     for (int i = 2; i < inputString.length(); i++) {
@@ -18,14 +17,19 @@ public class PalindromeSearcher {
           System.out.println(inputString.charAt(slider) + " " + inputString.charAt(j));
           String s = inputString.substring(j, slider + 1);
           System.out.println(s);
+          isPalindrome(s);
         }
         slider += 1;
-        //System.out.println(slider + " " + j + " " + i);
       }
-      //System.out.println("looped");
     }
-
   }
 
-  //private static boolean isPalindrome ();
+  private static boolean isPalindrome (String inOrder) {
+    StringBuilder reverser = new StringBuilder(inOrder);
+    String reversed = reverser.reverse().toString();
+    if (inOrder.equals(reversed)) {
+      return true;
+    }
+    return false;
+  }
 }
