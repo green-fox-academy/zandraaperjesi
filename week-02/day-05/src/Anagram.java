@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,15 @@ public class Anagram {
     String wordOne = myScanner.nextLine();
     System.out.println("Give me another word: ");
     String wordTwo = myScanner.nextLine();
-    System.out.println(wordOne.equals(wordTwo));
+    System.out.println(isAnagram(wordOne, wordTwo));
+  }
+
+  private static boolean isAnagram (String firstString, String secondString) {
+    char[] firstArray = firstString.toCharArray();
+    char[] secondArray = secondString.toCharArray();
+    Arrays.sort(firstArray);
+    Arrays.sort(secondArray);
+    System.out.println(firstArray.toString() + " " + secondArray.toString());
+    return firstArray.equals(secondArray);
   }
 }
