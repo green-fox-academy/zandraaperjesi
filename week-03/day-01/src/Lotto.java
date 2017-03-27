@@ -26,7 +26,9 @@ public class Lotto {
       for (int j = splitUp.length - 5; j < splitUp.length; j++) {
         StringBuilder intConverter = new StringBuilder();
         intConverter.append(splitUp[j]);
+        numbersFromLines.add(Integer.parseInt(intConverter.toString()));
       }
     }
+    System.out.println(numbersFromLines.toString());
   }
 }
