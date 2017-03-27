@@ -13,6 +13,7 @@ public class ReversedOrder {
     List<String> inOrder = new ArrayList<>();
     Path inputPath = Paths.get("assets/reversed-order.txt");
     Path outputPath = Paths.get("assets/in-order.txt");
+
     try {
       List<String> inputLines = Files.readAllLines(inputPath);
       for (String lines : inputLines) {
@@ -21,9 +22,11 @@ public class ReversedOrder {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
     for (String line : inOrder) {
       System.out.println(line);
     }
+
     try {
       Files.write(outputPath, inOrder);
     } catch (IOException e) {

@@ -23,6 +23,7 @@ public class Lotto {
       System.exit(1);
       System.out.println("couldn't open file");
     }
+
     for (int i = 0; i < lottoLines.size(); i++) {
       String[] splitUp = lottoLines.get(i).split(regex);
       for (int j = splitUp.length - 5; j < splitUp.length; j++) {
@@ -31,6 +32,7 @@ public class Lotto {
         numbersFromLines.add(Integer.parseInt(intConverter.toString()));
       }
     }
+    
     for (int num : numbersFromLines) {
       if (!numberMap.containsKey(num)) {
         numberMap.put(num, 1);
@@ -39,7 +41,7 @@ public class Lotto {
         numberMap.put(num, numberMap.get(num) + 1);
       }
     }
-    //System.out.println(numberMap);
+
     for (int i = 0; i < 5; i++) {
       int numBuffer = 0;
       int valueBuffer = 0;

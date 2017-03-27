@@ -14,6 +14,7 @@ public class EncodedLines {
     List<String> decodedLines = new ArrayList<>();
     Path inputPath = Paths.get("assets/encoded-lines.txt");
     Path outputPath = Paths.get("assets/decoded-lines.txt");
+
     try {
       encodedLines = Files.readAllLines(inputPath);
       for (String line : encodedLines) {
@@ -31,6 +32,7 @@ public class EncodedLines {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
     try {
       Files.write(outputPath, decodedLines);
     } catch (IOException e) {
