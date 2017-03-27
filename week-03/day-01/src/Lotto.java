@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Lotto {
   public static void main(String[] args) throws IOException {
+    HashMap<Integer, Integer> mostCommon= new HashMap<>();
     String regex = ";";
     List<String> lottoLines = new ArrayList<>();
     HashMap<Integer, Integer> numberMap= new HashMap<>();
@@ -38,6 +39,19 @@ public class Lotto {
         numberMap.put(num, numberMap.get(num) + 1);
       }
     }
-    System.out.println(numberMap);
+    //System.out.println(numberMap);
+    for (int i = 0; i < 5; i++) {
+      int numBuffer = 0;
+      int valueBuffer = 0;
+      for (int j = 1; j < numberMap.size() + 1; j++) {
+        if (numberMap.get(j) > valueBuffer) {
+          valueBuffer = numberMap.get(j);
+          numBuffer = j;
+        }
+      }
+      mostCommon.put(numBuffer, valueBuffer);
+      numberMap.put(numBuffer, 0);
+    }
+    System.out.println(mostCommon);
   }
 }
