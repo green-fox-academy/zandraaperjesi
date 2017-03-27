@@ -11,18 +11,29 @@ import java.util.List;
 public class ReversedLines {
   public static void main(String[] args) {
     Path textPath = Paths.get("assets/reversed-lines.txt");
+    Path outputPath = Paths.get("assets/not-reversed-lines.txt");
     List<String> textLines = new ArrayList<>();
-    ArrayList<String> reversedLines = new ArrayList<>();
+    List<String> reversedLines = new ArrayList<>();
 
     try {
       textLines = Files.readAllLines(textPath);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
-    for (String line : textLines) {
-      StringBuilder myStringBuilder = new StringBuilder(line);
+
+    for (String reverseLine : textLines) {
+      StringBuilder myStringBuilder = new StringBuilder(reverseLine);
       reversedLines.add(myStringBuilder.reverse().toString());
+    }
+
+    for (String line : reversedLines) {
+      System.out.println(line);
+    }
+
+    try {
+      Files.write(outputPath, reversedLines);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 }

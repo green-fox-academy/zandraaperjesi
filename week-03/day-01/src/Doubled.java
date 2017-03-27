@@ -9,9 +9,9 @@ import java.util.List;
  * Created by zandraa on 3/27/2017.
  */
 public class Doubled {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
     List<String> textLines = new ArrayList<>();
-    ArrayList<String> nonDuplicateLines = new ArrayList<>();
+    List<String> nonDuplicateLines = new ArrayList<>();
     Path textPath = Paths.get("assets/duplicated-chars.txt");
     Path outputPath = Paths.get("assets/not-duplicated.txt");
 
@@ -35,6 +35,10 @@ public class Doubled {
       nonDuplicateLines.add(myStringBuilder.toString());
     }
 
-    Files.write(outputPath, nonDuplicateLines);
+    try {
+      Files.write(outputPath, nonDuplicateLines);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
