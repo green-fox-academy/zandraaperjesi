@@ -14,11 +14,13 @@ public class Doubled {
     ArrayList<String> nonDuplicateLines = new ArrayList<>();
     Path textPath = Paths.get("assets/duplicated-chars.txt");
     Path outputPath = Paths.get("assets/not-duplicated.txt");
+
     try {
       textLines = Files.readAllLines(textPath);
     } catch (IOException e) {
       e.printStackTrace();
     }
+
     for (String line : textLines) {
       StringBuilder myStringBuilder = new StringBuilder();
       if (line.length() != 0) {
@@ -32,6 +34,7 @@ public class Doubled {
       System.out.println(myStringBuilder.toString());
       nonDuplicateLines.add(myStringBuilder.toString());
     }
+
     Files.write(outputPath, nonDuplicateLines);
   }
 }
