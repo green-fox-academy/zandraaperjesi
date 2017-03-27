@@ -26,7 +26,7 @@ public class GuessMyNumber {
 
     System.out.println("I've the number between 1-" + numberCap + ". You have 5 lives.");
     int  numToGuess = rand.nextInt(numberCap) + 1;
-    //System.out.println(numToGuess);
+    System.out.println(numToGuess);
     for (int i = 4; i >= 0; i--) {
       System.out.println("Your guess: ");
       while (!myScanner.hasNextInt()) {

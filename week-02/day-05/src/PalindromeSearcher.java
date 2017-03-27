@@ -29,9 +29,6 @@ public class PalindromeSearcher {
   private static boolean isPalindrome (String inOrder) {
     StringBuilder reverser = new StringBuilder(inOrder);
     String reversed = reverser.reverse().toString();
-    if (inOrder.equals(reversed)) {
-      return true;
-    }
-    return false;
+    return (inOrder.equals(reversed));
   }
 }
