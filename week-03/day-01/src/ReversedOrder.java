@@ -10,19 +10,22 @@ import java.util.List;
  */
 public class ReversedOrder {
   public static void main(String[] args) {
-    String regex = " ";
     List<String> inOrder = new ArrayList<>();
     Path inputPath = Paths.get("assets/reversed-order.txt");
+    Path outputPath = Paths.get("assets/in-order.txt");
     try {
       List<String> inputLines = Files.readAllLines(inputPath);
-      for (String line : inputLines) {
-        StringBuilder myStringBuilder = new StringBuilder(line);
-        String[] wordBuffer = myStringBuilder.reverse().toString().split(regex);
-        myStringBuilder.setLength(0);
-        for (int i = 0; i < wordBuffer.length; i++) {
-          myStringBuilder.append(wordBuffer[i]);
-        }
+      for (String lines : inputLines) {
+        inOrder.add(0, lines);
       }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    for (String line : inOrder) {
+      System.out.println(line);
+    }
+    try {
+      Files.write(outputPath, inOrder);
     } catch (IOException e) {
       e.printStackTrace();
     }
