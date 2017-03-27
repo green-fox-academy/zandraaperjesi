@@ -10,12 +10,14 @@ import java.util.List;
  * Created by zandraa on 3/27/2017.
  */
 public class Lotto {
+  public static String REGEX = ";";
+
   public static void main(String[] args) {
     HashMap<Integer, Integer> mostCommon= new HashMap<>();
-    String regex = ";";
     List<String> lottoLines = new ArrayList<>();
     HashMap<Integer, Integer> numberMap= new HashMap<>();
     ArrayList<Integer> numbersFromLines = new ArrayList<>();
+
     try {
       Path filePath = Paths.get("assets/otos.csv");
       lottoLines = Files.readAllLines(filePath);
@@ -25,7 +27,7 @@ public class Lotto {
     }
 
     for (int i = 0; i < lottoLines.size(); i++) {
-      String[] splitUp = lottoLines.get(i).split(regex);
+      String[] splitUp = lottoLines.get(i).split(REGEX);
       for (int j = splitUp.length - 5; j < splitUp.length; j++) {
         StringBuilder intConverter = new StringBuilder();
         intConverter.append(splitUp[j]);
