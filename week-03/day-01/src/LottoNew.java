@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoNew {
   public static String INPUT_PATH = "assets/otos.csv";
@@ -13,13 +10,26 @@ public class LottoNew {
   public static int NUM_END_INDEX = 16;
 
   public static void main(String[] args) {
-    inputReader();
+    List<String> winningNumbers = inputReader();
+    Map<String, Integer> numbersOccurence = numberCounter(winningNumbers);
   }
 
-  public static void inputReader() {
+  public static HashMap<String, Integer> numberCounter(List<String> numbers) {
+    HashMap<String, Integer> numbersCounted = new HashMap<>();
+    for (String readNumber : numbers) {
+      if (numbersCounted.containsKey(readNumber)) {
+        numbersCounted.put(readNumber, numbersCounted.get(readNumber) + 1);
+      } else {
+        numbersCounted.put(readNumber, 1);
+      }
+    }
+    return numbersCounted;
+  }
+
+  public static List<String> inputReader() {
+    List<String> numbers = new ArrayList<>();
     try {
       List<String> lines = Files.readAllLines(Paths.get(INPUT_PATH));
-      List<String> numbers= new ArrayList<>();
       for (String line : lines) {
         Collections.addAll(numbers, Arrays.copyOfRange(line.split(REGEX), NUM_START_INDEX, NUM_END_INDEX));
       }
@@ -27,5 +37,6 @@ public class LottoNew {
       e.printStackTrace();
       System.out.println("Couldn't open input file");
     }
+    return numbers;
   }
 }
