@@ -27,7 +27,7 @@ public class Doubled {
         myStringBuilder.append(line.charAt(0));
       }
       for (int i = 1; i < line.length(); i++) {
-        if (line.charAt(i) != line.charAt(i - 1)) {
+        if (i % 2 == 0) {
           myStringBuilder.append(line.charAt(i));
         }
       }

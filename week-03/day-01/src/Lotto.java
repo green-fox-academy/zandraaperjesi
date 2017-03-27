@@ -32,7 +32,7 @@ public class Lotto {
         numbersFromLines.add(Integer.parseInt(intConverter.toString()));
       }
     }
-    
+
     for (int num : numbersFromLines) {
       if (!numberMap.containsKey(num)) {
         numberMap.put(num, 1);
