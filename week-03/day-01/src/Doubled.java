@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,8 +13,9 @@ import java.util.Scanner;
 public class Doubled {
   public static void main(String[] args) {
     List<String> textLines= new ArrayList<>();
-    ArrayList<String> skimmedLines = new ArrayList<>();
     Path textPath = Paths.get("assets/duplicated-chars.txt");
+
+    //FileWriter myFileWriter = new FileWriter("not-duplicated.txt");
     try {
       textLines = Files.readAllLines(textPath);
     } catch (IOException e) {
@@ -29,7 +31,6 @@ public class Doubled {
           myStringBuilder.append(line.charAt(i));
         }
       }
-      System.out.println(myStringBuilder.toString());
     }
   }
 }

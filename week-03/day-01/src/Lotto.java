@@ -10,7 +10,7 @@ import java.util.List;
  * Created by zandraa on 3/27/2017.
  */
 public class Lotto {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
     HashMap<Integer, Integer> mostCommon= new HashMap<>();
     String regex = ";";
     List<String> lottoLines = new ArrayList<>();
