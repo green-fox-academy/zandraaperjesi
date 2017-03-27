@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class Lotto {
   public static void main(String[] args) throws IOException {
     String regex = ";";
     List<String> lottoLines = new ArrayList<>();
-    //ArrayList<String> splitLines= new ArrayList<>();
+    HashMap<Integer, Integer> numberMap= new HashMap<>();
     ArrayList<Integer> numbersFromLines = new ArrayList<>();
     try {
       Path filePath = Paths.get("assets/otos.csv");
@@ -29,6 +30,14 @@ public class Lotto {
         numbersFromLines.add(Integer.parseInt(intConverter.toString()));
       }
     }
-    System.out.println(numbersFromLines.toString());
+    for (int num : numbersFromLines) {
+      if (!numberMap.containsKey(num)) {
+        numberMap.put(num, 1);
+      }
+      else {
+        numberMap.put(num, numberMap.get(num) + 1);
+      }
+    }
+    System.out.println(numberMap);
   }
 }
