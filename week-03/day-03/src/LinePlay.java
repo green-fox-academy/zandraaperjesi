@@ -11,9 +11,9 @@ public class LinePlay {
   public static void mainDraw(Graphics graphics){
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/line-play/r1.png]
-
-
-
+    for(int i = 0; i < LINES; i++) {
+      lineDrawer(280 / LINES * i + 20, 280 / LINES * i + 20, graphics);
+    }
   }
 
   public static void lineDrawer(int x, int y, Graphics g) {
