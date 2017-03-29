@@ -7,15 +7,16 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
 
   public static final int HEIGHT = 7;
+  public static final int DIAMETER = 20;
 
   public static void mainDraw(Graphics graphics){
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/super-hexagon/r6.gif]
 
     for (int i = 0; i < HEIGHT / 2 + 1; i++) {
-      double coordX = 150 - 20 / 2 * 3 * i;
-      double coordXX = 150 + 20 / 2 * 3 * i;
-      double coordY = 30 + 20 * i / 2 * Math.sqrt(3);
+      double coordX = 150 - DIAMETER / 2 * 3 * i;
+      double coordXX = 150 + DIAMETER / 2 * 3 * i;
+      double coordY = 30 + DIAMETER * i / 2 * Math.sqrt(3);
       for (int j = 0; j < HEIGHT - i; j++) {
         hexagonPrinter(coordX, coordY, graphics);
         hexagonPrinter(coordXX, coordY, graphics);
@@ -27,7 +28,7 @@ public class SuperHexagon {
   public static void hexagonPrinter(double x, double y, Graphics g) {
     Polygon p = new Polygon();
     for (int i = 0; i < 6; i++)
-      p.addPoint((int) (x + 20 * Math.cos(i * 2 * Math.PI / 6)), (int) (y + 20 * Math.sin(i * 2 * Math.PI / 6)));
+      p.addPoint((int) (x + DIAMETER * Math.cos(i * 2 * Math.PI / 6)), (int) (y + DIAMETER * Math.sin(i * 2 * Math.PI / 6)));
     g.drawPolygon(p);
   }
 
