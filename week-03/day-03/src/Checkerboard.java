@@ -8,6 +8,14 @@ public class Checkerboard {
 
   public static void mainDraw(Graphics graphics){
     // fill the canvas with a checkerboard pattern.
+    Color[] colors = {Color.WHITE, Color.BLACK};
+    for (int i = 0; i < 8; i++) {
+      int y = i * 300 / 8;
+      for (int j = 0; j < 8; j++) {
+        int x = j * 300 / 8;
+        squareDrawer(x, y, colors[(i + j) % 2], graphics);
+      }
+    }
 
 
 
@@ -15,7 +23,7 @@ public class Checkerboard {
 
   public static void squareDrawer(int x, int y, Color color, Graphics g) {
     g.setColor(color);
-    g.drawRect(x, y, 300 / 8, 300 / 8);
+    g.fillRect(x, y, 300 / 8, 300 / 8);
   }
   //    Don't touch the code below
   public static void main(String[] args) {
