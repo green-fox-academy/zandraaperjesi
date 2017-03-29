@@ -10,7 +10,7 @@ public class SquareInTheCenter {
     // draw a green 10x10 square to the canvas' center.
 
     graphics.setColor(Color.GREEN);
-    graphics.fillRect(145, 145, 10, 10);
+    graphics.drawRect(145, 145, 10, 10);
 
 
   }
