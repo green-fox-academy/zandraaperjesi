@@ -6,16 +6,18 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class ToCenter {
 
+  public static int NO_RAYS = 20;
+
   public static void mainDraw(Graphics graphics){
     // create a line drawing function that takes 2 parameters:
     // the x and y coordinates of the line's starting point
     // and draws a line from that point to the center of the canvas.
     // fill the canvas with lines from the edges, every 20 px, to the center.
-    for (int i = 0; i < 20; i++) {
-      lineDrawer(300 / 20 * i, 0, graphics);
-      lineDrawer(300 / 20 * i, 300, graphics);
-      lineDrawer(0, 300 / 20 * i, graphics);
-      lineDrawer(300, 300 / 20 * i, graphics);
+    for (int i = 0; i < NO_RAYS; i++) {
+      lineDrawer(300 / NO_RAYS * i, 0, graphics);
+      lineDrawer(300 / NO_RAYS * i, 300, graphics);
+      lineDrawer(0, 300 / NO_RAYS * i, graphics);
+      lineDrawer(300, 300 / NO_RAYS * i, graphics);
     }
   }
 
