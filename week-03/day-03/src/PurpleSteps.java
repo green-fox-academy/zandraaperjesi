@@ -6,6 +6,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class PurpleSteps {
 
+  public static Color PURPLE = new Color(169, 67, 232);
+
   public static void mainDraw(Graphics graphics){
     // reproduce this:
     // [https://github.com/greenfox-academy/teaching-materials/blob/master/exercises/drawing/purple-steps/r3.png]
@@ -15,6 +17,9 @@ public class PurpleSteps {
   }
 
   public static void boxDrawer(int coord, Graphics g) {
+    g.setColor(PURPLE);
+    g.fillRect(coord, coord, 11, 11);
+    g.setColor(Color.BLACK);
     g.drawRect(coord, coord, 11, 11);
   }
 
