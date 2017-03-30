@@ -9,7 +9,7 @@ public class Tree {
   public static final int ANGLE = 25;
 
   public static void mainDraw(Graphics graphics){
-    lineDrawer(6, 200, 500, 200, 400, ANGLE, 80, graphics);
+    lineDrawer(3, 200, 500, 200, 400, ANGLE, 80, graphics);
   }
 
   public static void lineDrawer(int depth, int x1, int y1, int x2, int y2, int angle, int length,  Graphics g) {
@@ -36,9 +36,16 @@ public class Tree {
       }
 
       g.setColor(Color.BLUE);
-      lineDrawer(depth - 1, x2, y2, upx2, upy2,angle + 25, length, g);
-      lineDrawer(depth - 1, x2, y2, upxx2, upyy2,angle + 25, length, g);
       lineDrawer(depth - 1, x2, y2, upxxx2, upyyy2, angle, length, g);
+      if (x1 == x2 || x1 < x2) {
+        lineDrawer(depth - 1, x2, y2, upx2, upy2, angle + 25, length, g);
+        lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle + 25, length, g);
+        System.out.println("1");
+      }
+      else
+        lineDrawer(depth - 1, x2, y2, upx2, upy2, angle - 25, length, g);
+        lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle - 25, length, g);
+        System.out.println("2");
     }
   }
 
