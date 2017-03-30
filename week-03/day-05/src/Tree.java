@@ -7,6 +7,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Tree {
 
   public static void mainDraw(Graphics graphics){
+    lineDrawer(150, 300, 150, 150, graphics);
+  }
+
+  public static void lineDrawer(int x1, int y1, int x2, int y2, Graphics g) {
+    g.drawLine(x1, y1, x2, y2);
+    
 
   }
 
