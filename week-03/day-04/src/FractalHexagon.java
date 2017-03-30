@@ -4,23 +4,18 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FractalBoxes {
-
-  public static final int DEPTH = 5;
+public class FractalHexagon {
 
   public static void mainDraw(Graphics graphics){
-    boxDrawer(DEPTH, 0, 0, 486, graphics);
+
+
   }
 
-  public static void boxDrawer(int depth,int x, int y, int size, Graphics g) {
-    g.drawRect(x, y, size, size);
-
-    if (depth > 0) {
-      boxDrawer(depth - 1,x + size / 3, y, size / 3, g);
-      boxDrawer(depth - 1, x, y + size / 3, size / 3, g);
-      boxDrawer(depth - 1, x + size / 3, y + size / 3 * 2, size / 3, g);
-      boxDrawer(depth - 1, x + size / 3 * 2, y + size / 3, size / 3, g);
-    }
+  public static void hexagonPrinter(double x, double y, double diameter,  Graphics g) {
+    Polygon p = new Polygon();
+    for (int i = 0; i < 6; i++)
+      p.addPoint((int) (x + diameter * Math.cos(i * 2 * Math.PI / 6)), (int) (y + diameter * Math.sin(i * 2 * Math.PI / 6)));
+    g.drawPolygon(p);
   }
 
   //    Don't touch the code below
@@ -36,7 +31,6 @@ public class FractalBoxes {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      this.setBackground(Color.YELLOW);
       mainDraw(graphics);
 
     }
