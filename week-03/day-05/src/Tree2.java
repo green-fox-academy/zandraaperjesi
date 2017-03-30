@@ -6,37 +6,61 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Tree2 {
 
+  public static final int ANGLE = 25;
+
   public static void mainDraw(Graphics graphics){
-    drawer(150, 150, 20, 40, 5, graphics);
+    lineDrawer(5, 300, 600, 300, 500, ANGLE, 80, graphics);
   }
 
-  public static void drawer(int x, int y, int angle, int length, int depth, Graphics g) {
-    int x2 = x + (int) (Math.sin(Math.toRadians(angle)) * length);
-    int y2 = y - (int) (Math.cos(Math.toRadians(angle)) * length);
-    int x3 = x + (int) (Math.sin(Math.toRadians(320 + angle % 360)) * length);
-    int y3 = y - (int) (Math.cos(Math.toRadians(320 + angle % 360)) * length);
-    int x4 = Math.abs(x - x);
-    int y4 = Math.abs(y - y);
-    if (x > x) {
-      x4 = (int)(x - x4 * .9);
-    }
-    else {
-      x4 = (int)(x + x4 * .9);
-    }
-    if (y > y) {
-      y4 = (int)(y - y4 * .9);
-    }
-    else {
-      y4 = (int)(y + y4 * .9);
-    }
-
+  public static void lineDrawer(int depth, int x1, int y1, int x2, int y2, int angle, int length,  Graphics g) {
+    g.drawLine(x1, y1, x2, y2);
     if (depth > 0) {
-      g.drawLine(x, y, x2, y2);
-      g.drawLine(x, y, x3, y3);
-      g.drawLine(x, y, x4, y4);
-      drawer(x4, y4, angle, 50, depth - 1, g);
-    }
+      length *= .9;
+      angle = angle % 360;
 
+      int upx2 = 0;
+      int upxx2 = 0;
+      if (x1 <= x2) {
+        upx2 = x2 + (int) (Math.sin(Math.toRadians(angle)) * length);
+        upxx2 = x2 + (int) (Math.sin(Math.toRadians(angle + 310)) * length);
+      }
+      else {
+        upx2 = x2 - (int) (Math.sin(Math.toRadians(angle)) * length);
+        upxx2 = x2 - (int) (Math.sin(Math.toRadians(angle + 310)) * length);
+      }
+      int upy2 = y2 - (int) (Math.cos(Math.toRadians(angle)) * length);
+      int upyy2 = y2 - (int) (Math.cos(Math.toRadians(angle + 310)) * length);
+
+      int upxxx2 = Math.abs(x1 - x2);
+      int upyyy2 = Math.abs(y1 - y2);
+      if (x1 > x2) {
+        upxxx2 = (int)(x2 - upxxx2 * .9);
+      }
+      else {
+        upxxx2 = (int)(x2 + upxxx2 * .9);
+      }
+      if (y1 > y2) {
+        upyyy2 = (int)(y2 - upyyy2 * .9);
+      }
+      else {
+        upyyy2 = (int)(y2 + upyyy2 * .9);
+      }
+
+      lineDrawer(depth - 1, x2, y2, upxxx2, upyyy2, angle, length, g);
+
+      if (x1 <= x2) {
+        lineDrawer(depth - 1, x2, y2, upx2, upy2, angle + 25, length, g);
+        lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle + 25, length, g);
+      }
+      else {
+        g.setColor(Color.green);
+        System.out.println(angle + "," + depth);
+        lineDrawer(depth - 1, x2, y2, upx2, upy2, angle - 25, length, g);
+        g.setColor(Color.magenta);
+        lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle - 25, length, g);
+        g.setColor(Color.black);
+      }
+    }
   }
 
   //    Don't touch the code below

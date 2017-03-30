@@ -42,7 +42,7 @@ public class Tree {
       }
       else
         lineDrawer(depth - 1, x2, y2, upx2, upy2, angle - 25, length, g);
-        lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle - 25, length, g);
+      lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle - 25, length, g);
     }
   }
 
