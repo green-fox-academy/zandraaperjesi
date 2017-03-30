@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
 
 import java.awt.*;
 
@@ -6,14 +7,24 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Tree {
 
+  public static final int ANGLE = 20;
+
   public static void mainDraw(Graphics graphics){
-    lineDrawer(150, 300, 150, 150, graphics);
+    lineDrawer(5, 200, 500, 200, 400, ANGLE, graphics);
   }
 
-  public static void lineDrawer(int x1, int y1, int x2, int y2, Graphics g) {
+  public static void lineDrawer(int depth, int x1, int y1, int x2, int y2,int angle, Graphics g) {
     g.drawLine(x1, y1, x2, y2);
-    
+    if (depth > 0) {
+      int upx2 = x2 + (int) (Math.sin(Math.toRadians(angle)) * 30);
+      int upy2 = y2 - (int) (Math.cos(Math.toRadians(angle)) * 30);
+      int upxx2 = x2 + (int) (Math.sin(Math.toRadians(360 - angle)) * 30);
+      int upyy2 = y2 - (int) (Math.cos(Math.toRadians(360 - angle)) * 30);
 
+      g.setColor(Color.BLUE);
+      lineDrawer(depth - 1, x2, y2, upx2, upy2,angle + 20, g);
+      lineDrawer(depth - 1, x2, y2, upxx2, upyy2,angle + 20, g);
+    }
   }
 
   //    Don't touch the code below
