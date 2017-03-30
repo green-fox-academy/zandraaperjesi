@@ -20,10 +20,25 @@ public class Tree {
       int upy2 = y2 - (int) (Math.cos(Math.toRadians(angle)) * 30);
       int upxx2 = x2 + (int) (Math.sin(Math.toRadians(360 - angle)) * 30);
       int upyy2 = y2 - (int) (Math.cos(Math.toRadians(360 - angle)) * 30);
+      int upxxx2 = Math.abs(x1 - x2);
+      int upyyy2 = Math.abs(y1 - y2);
+      if (x1 > x2) {
+        upxxx2 = x2 - upxxx2;
+      }
+      else {
+        upxxx2 = x2 + upxxx2;
+      }
+      if (y1 > y2) {
+        upyyy2 = y2 - upyyy2;
+      }
+      else {
+        upyyy2 = y2 + upyyy2;
+      }
 
       g.setColor(Color.BLUE);
       lineDrawer(depth - 1, x2, y2, upx2, upy2,angle + 20, g);
       lineDrawer(depth - 1, x2, y2, upxx2, upyy2,angle + 20, g);
+      lineDrawer(depth - 1, x2, y2, upxxx2, upyyy2, angle, g);
     }
   }
 
