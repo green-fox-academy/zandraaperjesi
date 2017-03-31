@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.TimerTask;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -15,38 +14,43 @@ public class Tree2 {
   public static void lineDrawer(Graphics g, int x1, int y1, double angle, int depth, double length, int red, int green, int blue) {
     if (depth > 0) {
       Graphics2D gTD = (Graphics2D) g;
-      int x2 = x1 + (int) (Math.sin(Math.toRadians(angle)) * length);
-      int y2 = y1 - (int) (Math.cos(Math.toRadians(angle)) * length);
-      int upx = Math.abs(x1 - x2);
-      int upy = Math.abs(y1 - y2);
-      if (x1 > x2) {
-        upx = (int)(x2 - upx * .9);
-      }
-      else {
-        upx = (int)(x2 + upx * .9);
-      }
-      if (y1 > y2) {
-        upy = (int)(y2 - upy * .9);
-      }
-      else {
-        upy = (int)(y2 + upy * .9);
-      }
-
+      int[] coords = coordCounter(length, x1, y1, angle);
       green += depth;
       gTD.setColor(new Color(red, green, blue));
       gTD.setStroke(new BasicStroke((float)length / 5));
 
-      gTD.drawLine(x1, y1, x2, y2);
-      gTD.drawLine(x1, y1, upx, upy);
+      gTD.drawLine(x1, y1, coords[0], coords[1]);
+      gTD.drawLine(x1, y1, coords[2], coords[3]);
 
-      lineDrawer(g, x2, y2, angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, x2, y2, angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, upx, upy, angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, upx, upy, angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
+      lineDrawer(g, coords[0], coords[1], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
+      lineDrawer(g, coords[0], coords[1], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
+      lineDrawer(g, coords[2], coords[3], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
+      lineDrawer(g, coords[2], coords[3], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
     }
   }
 
-  public static int[] randomRGB () {
+  public static int[] coordCounter(double len, int x, int y, double angle) {
+    int x2 = x + (int) (Math.sin(Math.toRadians(angle)) * len);
+    int y2 = y - (int) (Math.cos(Math.toRadians(angle)) * len);
+    int upx = Math.abs(x - x2);
+    int upy = Math.abs(y - y2);
+    if (x > x2) {
+      upx = (int)(x2 - upx * .9);
+    }
+    else {
+      upx = (int)(x2 + upx * .9);
+    }
+    if (y > y2) {
+      upy = (int)(y2 - upy * .9);
+    }
+    else {
+      upy = (int)(y2 + upy * .9);
+    }
+    int[] coords = {x2, y2, upx, upy};
+    return coords;
+  }
+
+  public static int[] randomRGB() {
     int[] rgb = new int[2];
     rgb[0] = 220 + (int)(Math.random() * 35);
     rgb[1] = 1 + (int)(Math.random() * 100);
