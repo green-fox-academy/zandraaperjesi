@@ -9,7 +9,7 @@ public class Tree {
   public static final int ANGLE = 25;
 
   public static void mainDraw(Graphics graphics){
-    lineDrawer(7, 300, 600, 300, 500, ANGLE, 80, graphics);
+    lineDrawer(7, 400, 600, 400, 500, ANGLE, 80, graphics);
   }
 
   public static void lineDrawer(int depth, int x1, int y1, int x2, int y2, int angle, int length,  Graphics g) {
@@ -40,8 +40,7 @@ public class Tree {
         lineDrawer(depth - 1, x2, y2, upx2, upy2, angle + 25, length, g);
         lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle + 25, length, g);
       }
-      else
-        lineDrawer(depth - 1, x2, y2, upx2, upy2, angle - 25, length, g);
+      lineDrawer(depth - 1, x2, y2, upx2, upy2, angle - 25, length, g);
       lineDrawer(depth - 1, x2, y2, upxx2, upyy2, angle - 25, length, g);
     }
   }

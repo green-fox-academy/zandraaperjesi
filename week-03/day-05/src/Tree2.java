@@ -8,10 +8,10 @@ public class Tree2 {
 
   public static void mainDraw(Graphics graphics){
     int[] colors = randomRGB();
-    lineDrawer(graphics, 300, 500, 0, 8, 50, colors[0], 1, colors[1]);
+    lineDrawer(300, 500, 0, 8, 50, colors[0], 1, colors[1], graphics);
   }
 
-  public static void lineDrawer(Graphics g, int x1, int y1, double angle, int depth, double length, int red, int green, int blue) {
+  public static void lineDrawer(int x1, int y1, double angle, int depth, double length, int red, int green, int blue, Graphics g) {
     if (depth > 0) {
       Graphics2D gTD = (Graphics2D) g;
       int[] coords = coordCounter(length, x1, y1, angle);
@@ -22,10 +22,10 @@ public class Tree2 {
       gTD.drawLine(x1, y1, coords[0], coords[1]);
       gTD.drawLine(x1, y1, coords[2], coords[3]);
 
-      lineDrawer(g, coords[0], coords[1], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, coords[0], coords[1], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, coords[2], coords[3], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
-      lineDrawer(g, coords[2], coords[3], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255);
+      lineDrawer(coords[0], coords[1], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255, g);
+      lineDrawer(coords[0], coords[1], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255, g);
+      lineDrawer(coords[2], coords[3], angle - 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255, g);
+      lineDrawer(coords[2], coords[3], angle + 30, depth - 1, length * .8, (red + 10) % 255, green, Math.abs(blue - 10) % 255, g);
     }
   }
 
