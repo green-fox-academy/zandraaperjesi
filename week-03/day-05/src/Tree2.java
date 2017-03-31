@@ -8,7 +8,7 @@ public class Tree2 {
 
   public static void mainDraw(Graphics graphics){
     int[] colors = randomRGB();
-    lineDrawer(300, 500, 0, 8, 50, colors[0], 1, colors[1], graphics);
+    lineDrawer(500, 650, 0, 8, 80, colors[0], 1, colors[1], graphics);
   }
 
   public static void lineDrawer(int x1, int y1, double angle, int depth, double length, int red, int green, int blue, Graphics g) {
@@ -17,7 +17,7 @@ public class Tree2 {
       int[] coords = coordCounter(length, x1, y1, angle);
       green += depth;
       gTD.setColor(new Color(red, green, blue));
-      gTD.setStroke(new BasicStroke((float)length / 5));
+      gTD.setStroke(new BasicStroke((float)length / 4));
 
       gTD.drawLine(x1, y1, coords[0], coords[1]);
       gTD.drawLine(x1, y1, coords[2], coords[3]);
@@ -60,7 +60,7 @@ public class Tree2 {
   //    Don't touch the code below
   public static void main(String[] args) {
     JFrame jFrame = new JFrame("Drawing");
-    jFrame.setSize(new Dimension(600, 600));
+    jFrame.setSize(new Dimension(1000, 800));
     jFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jFrame.add(new ImagePanel());
     jFrame.setLocationRelativeTo(null);
