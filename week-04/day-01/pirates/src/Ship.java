@@ -4,6 +4,7 @@ import java.util.List;
 public class Ship {
   public List<Pirates> crew;
   public Pirates captain;
+  public int numberOfPirates;
 
   public Ship() {
     crew = new ArrayList<>();
@@ -16,6 +17,7 @@ public class Ship {
     for (int i = 0; i < n; i++) {
       crew.add(new Pirates());
     }
+    numberOfPirates = crew.size();
     System.out.println("Captain drank " + captain.intoxicated + " rums.");
     if(!captain.alive) {
       System.out.println("He is dead.");
@@ -26,5 +28,6 @@ public class Ship {
     else {
       System.out.println("He is ready for battle.");
     }
+    System.out.println("There are " + numberOfPirates + " pirates in the crew.");
   }
 }
