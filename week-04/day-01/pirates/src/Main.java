@@ -12,5 +12,6 @@ public class Main {
     p1.howsItGoingMate();
     p1.howsItGoingMate();
     p1.wakeUp();
+    p1.brawl(p2);
   }
 }

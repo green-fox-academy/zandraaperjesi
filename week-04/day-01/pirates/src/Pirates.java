@@ -1,12 +1,12 @@
 public class Pirates {
   public int intoxicated;
   public boolean alive;
-  public boolean passeOut;
+  public boolean passOut;
 
   public Pirates() {
     intoxicated = 0;
     alive = true;
-    passeOut = false;
+    passOut = false;
   }
 
   public void drinkSomeRum() {
@@ -19,12 +19,12 @@ public class Pirates {
   }
 
   public void howsItGoingMate() {
-    if(alive && !passeOut) {
+    if(alive && !passOut) {
       if (intoxicated <= 4) {
         System.out.println("Pour me anudder!");
       } else {
         System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
-        passeOut = true;
+        passOut = true;
         intoxicated = 0;
       }
     }
@@ -46,9 +46,11 @@ public class Pirates {
       int n = rand.randomNumber();
       if(n < 1) {
         die();
+        System.out.println("The pirate died.");
       }
       else if(n > 1) {
         pirate.die();
+        System.out.println("The other pirate died.");
       }
       else {
         System.out.println("zZZzzZZzz");
@@ -79,6 +81,6 @@ public class Pirates {
 
   public void wakeUp() {
     System.out.println("Huh?");
-    passeOut = false;
+    passOut = false;
   }
 }
