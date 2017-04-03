@@ -34,7 +34,24 @@ public class Pirates {
     alive = false;
   }
 
-  public void brawl() {
-    
+  public void brawl(Pirates pirate) {
+    if(alive && pirate.alive) {
+      RanNum rand = new RanNum();
+      int n = rand.randomNumber();
+      if(n < 1) {
+        die();
+      }
+      else if(n > 1) {
+        pirate.die();
+      }
+      else {
+        System.out.println("zZZzzZZzz");
+        intoxicated = 0;
+        pirate.intoxicated = 0;
+      }
+    }
+    else{
+      System.out.println("You can's fight dead pirates.");
+    }
   }
 }
