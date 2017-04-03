@@ -27,5 +27,14 @@ public class Main {
     blog.add(post3);
 
     System.out.println("blogposts: " + blog.blogPosts.size());
+
+    blog.delete(2);
+
+    System.out.println("blogposts: " + blog.blogPosts.size());
+    System.out.println(blog.blogPosts.get(0).title);
+
+    blog.update(0, post3);
+
+    System.out.println(blog.blogPosts.get(0).title);
   }
 }
