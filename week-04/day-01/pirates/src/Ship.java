@@ -35,11 +35,13 @@ public class Ship {
     if(this.countPoints() > otherShip.countPoints()) {
       win(this);
       lose(otherShip);
+      System.out.println("The ship won the battle!");
       return true;
     }
     else {
       lose(this);
       win(otherShip);
+      System.out.println("The ship lost the battle!");
       return false;
     }
   }
