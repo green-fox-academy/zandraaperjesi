@@ -19,7 +19,7 @@ public class FleetOfThings {
     fleet.add(obstacles);
     fleet.add(standUp);
     fleet.add(lunch);
-    
+
     System.out.println(fleet);
   }
 }
