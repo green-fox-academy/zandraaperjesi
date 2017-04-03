@@ -30,4 +30,19 @@ public class Ship {
     }
     System.out.println("There are " + numberOfPirates + " pirates in the crew.");
   }
+
+  public boolean battle(Ship otherShip) {
+    return(this.countPoints() > otherShip.countPoints());
+  }
+
+  public int countPoints() {
+    int points = 0;
+    for(Pirates p : this.crew) {
+      if(p.alive) {
+        points++;
+      }
+    }
+    points -= this.captain.intoxicated;
+    return points;
+  }
 }
