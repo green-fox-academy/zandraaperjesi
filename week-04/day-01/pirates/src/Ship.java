@@ -32,7 +32,34 @@ public class Ship {
   }
 
   public boolean battle(Ship otherShip) {
-    return(this.countPoints() > otherShip.countPoints());
+    if(this.countPoints() > otherShip.countPoints()) {
+      win(this);
+      lose(otherShip);
+      return true;
+    }
+    else {
+      lose(this);
+      win(otherShip);
+      return false;
+    }
+  }
+
+  public void win(Ship ship) {
+    int n = new RanNum().randomNumber();
+    for(Pirates p : this.crew) {
+      for (int i = 0; i < n; i++) {
+        p.drinkSomeRum();
+      }
+    }
+  }
+
+  public void lose(Ship ship) {
+    int n = new RanNum().randomNumber();
+    for (int i = 0; i < ship.crew.size(); i++) {
+      if(i / n == 1) {
+        ship.crew.remove(i);
+      }
+    }
   }
 
   public int countPoints() {
