@@ -11,6 +11,7 @@ public class Student extends Person {
   public Student() {
     super();
     this.previousOrganization = "The School of Life";
+    this.skippedDays = 0;
   }
 
   @Override

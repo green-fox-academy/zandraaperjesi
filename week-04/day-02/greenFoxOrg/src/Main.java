@@ -4,7 +4,10 @@ public class Main {
 //    p.introduce();
 //    p.getGoal();
 
-    Student s = new Student();
-    s.introduce();
+//    Student s = new Student();
+//    s.introduce();
+
+    Mentor m = new Mentor();
+    m.introduce();
   }
 }
