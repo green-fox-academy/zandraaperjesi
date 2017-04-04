@@ -10,7 +10,9 @@ public class Aircraft {
   }
 
   public int fight() {
-    return this.ammo * this.baseDamage;
+    int damage = this.ammo * this.baseDamage;
+    this.ammo = 0;
+    return damage;
   }
 
   public int refill(int ammoIn) {
@@ -29,8 +31,12 @@ public class Aircraft {
     return this.getClass().toString();
   }
 
+  public int countDamage() {
+    return this.ammo * this.baseDamage;
+  }
+
   public String getStatus() {
     return "Type " + this.getClass() + ", Ammo: " + this.ammo + ", Base Damage: "
-            + this.baseDamage + ", All Damage: " + this.ammo * this.baseDamage;
+            + this.baseDamage + ", All Damage: " + this.countDamage();
   }
 }
