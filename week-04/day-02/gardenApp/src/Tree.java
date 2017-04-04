@@ -1,9 +1,7 @@
 public class Tree extends Plant{
-  private boolean needsWater;
-  private double currentWaterAmount;
-
   public Tree() {
     super();
+    this.setNeedWaterWhen(10);
   }
 
   public void waterPlant(int water) {
