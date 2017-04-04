@@ -51,6 +51,7 @@ public class Ship {
     for(Pirates p : ship.crew) {
       for (int i = 0; i < n; i++) {
         p.drinkSomeRum();
+        ship.captain.drinkSomeRum();
       }
     }
   }
