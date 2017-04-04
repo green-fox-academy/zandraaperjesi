@@ -22,7 +22,7 @@ public class Carrier {
   }
 
   public void fill() {
-    while(this.storeOfAmmo > 0) {
+    if(this.storeOfAmmo > 0) {
       for(Aircraft a : aircrafts) {
         if(a.getClass().equals(F35.class)) {
           this.storeOfAmmo = a.refill(storeOfAmmo);
@@ -31,9 +31,13 @@ public class Carrier {
       for(Aircraft a : aircrafts) {
         this.storeOfAmmo = a.refill(storeOfAmmo);
       }
-      return;
+      if(this.storeOfAmmo < 1) {
+        System.out.println("No ammo left on carrier!");
+      }
     }
-    System.out.println("No ammo left on carrier!");
+    else {
+      System.out.println("No ammo left on carrier!");
+    }
   }
 
   public void fight(Carrier carrier) {
