@@ -27,11 +27,7 @@ public class Plant {
     return needWaterWhen;
   }
 
-//  public boolean getNeedsWater() {
-//    return this.needWater;
-//  }
-//
-//  public void setNeedsWater(boolean need) {
-//    this.needWater = need;
-//  }
+  public String getColor() {
+    return this.color;
+  }
 }

@@ -3,6 +3,7 @@ public class Flower extends Plant{
     super(color, 5);
   }
 
+  @Override
   public void waterPlant(int water) {
     setCurrentWaterAmount(water * .75);
   }
