@@ -1,7 +1,6 @@
 public class Tree extends Plant{
-  public Tree() {
-    super();
-    this.setNeedWaterWhen(10);
+  public Tree(String color) {
+    super(color, 10);
   }
 
   public void waterPlant(int water) {

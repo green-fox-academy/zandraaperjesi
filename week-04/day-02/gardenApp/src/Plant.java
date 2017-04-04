@@ -4,9 +4,11 @@ public class Plant {
   private String color;
   private int needWaterWhen;
 
-  public Plant() {
+  public Plant(String color, int needWaterWhen) {
     this.needWater = false;
     this.currentWaterAmount = 0;
+    this.color = color;
+    this.needWaterWhen = needWaterWhen;
   }
 
   public void waterPlant(int water) {
@@ -27,21 +29,5 @@ public class Plant {
 
   public void setNeedsWater(boolean need) {
     this.needWater = need;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
-
-  public String getColor() {
-    return this.color;
-  }
-
-  public int getNeedWaterWhen() {
-    return needWaterWhen;
-  }
-
-  public void setNeedWaterWhen(int needsWaterUnder) {
-    this.needWaterWhen = needsWaterUnder;
   }
 }
