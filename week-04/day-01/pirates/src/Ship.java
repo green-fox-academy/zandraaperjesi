@@ -4,20 +4,20 @@ import java.util.List;
 public class Ship {
   public List<Pirates> crew;
   public Pirates captain;
-  public int numberOfPirates;
+  public int numberOfPirates = 0;
 
   public Ship() {
-    crew = new ArrayList<>();
-    captain = new Pirates();
+    this.captain = new Pirates();
+    this.crew = new ArrayList<>();
   }
 
   public void fillShip() {
     RanNum ran = new RanNum();
     int n = ran.piratesInShip();
     for (int i = 0; i < n; i++) {
-      crew.add(new Pirates());
+      this.crew.add(new Pirates());
     }
-    numberOfPirates = crew.size();
+    numberOfPirates = this.crew.size();
     System.out.println("Captain drank " + captain.intoxicated + " rums.");
     if(!captain.alive) {
       System.out.println("He is dead.");
@@ -48,7 +48,7 @@ public class Ship {
 
   public void win(Ship ship) {
     int n = new RanNum().randomNumber();
-    for(Pirates p : this.crew) {
+    for(Pirates p : ship.crew) {
       for (int i = 0; i < n; i++) {
         p.drinkSomeRum();
       }

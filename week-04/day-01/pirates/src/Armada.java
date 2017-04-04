@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Armada {
   public List<Ship> ships;
@@ -10,17 +9,22 @@ public class Armada {
   }
 
   public boolean war(Armada otherArmada) {
-    ListIterator<Ship> otherIt = otherArmada.ships.listIterator();
-    ListIterator<Ship> thisIt = this.ships.listIterator();
+    int i = 0;
+    int j = 0;
 
-    while (thisIt.hasNext() && otherIt.hasNext()) {
-      thisIt.next();
-      otherIt.next();
-      if (thisIt.equals(this.ships.get(this.ships.size() - 1))) {
+    while (i < this.ships.size() && j < otherArmada.ships.size()) {
+      if(this.ships.get(i).battle(otherArmada.ships.get(j))) {
+        j++;
+      }
+      else {
+        i++;
+      }
+
+      if (this.ships.get(i).equals(this.ships.get(this.ships.size() - 1))) {
         System.out.println("The armada's last ship has fallen!");
         return false;
       }
-      if (otherIt.equals(otherArmada.ships.get(otherArmada.ships.size() - 1))); {
+      if (otherArmada.ships.get(j).equals(otherArmada.ships.get(otherArmada.ships.size() - 1))) {
         System.out.println("The other armada has lost all of its ships!");
         return true;
       }
