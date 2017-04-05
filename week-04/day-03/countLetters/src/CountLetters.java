@@ -8,15 +8,26 @@ public class CountLetters {
   public CountLetters(String inputString) {
     this.toCount = inputString;
     occurence = new HashMap<>();
-    for (int i = 0; i < inputString.length(); i++) {
-      if(occurence.containsKey(inputString.charAt(i))) {
-        occurence.replace(inputString.charAt(i), occurence.get(inputString.charAt(i)) + 1);
+    this.countLetters();
+  }
+
+  public void countLetters() {
+    for (int i = 0; i < this.toCount.length(); i++) {
+      if(occurence.containsKey(this.toCount.charAt(i))) {
+        occurence.replace(this.toCount.charAt(i), occurence.get(this.toCount.charAt(i)) + 1);
       }
       else {
-        occurence.put(inputString.charAt(i), 1);
+        occurence.put(this.toCount.charAt(i), 1);
       }
     }
   }
 
-  
+  public int timesInWord(char c) {
+    if(occurence.containsKey(c)) {
+      return occurence.get(c);
+    }
+    else {
+      return 0;
+    }
+  }
 }
