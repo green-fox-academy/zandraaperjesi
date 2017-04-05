@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppleTest {
@@ -8,8 +9,8 @@ public class AppleTest {
   public void beforeEveryTest() {
     apple = new Apple();
   }
-  
-  @org.junit.Test
+
+  @Test
   public void getApple() throws Exception {
     assertEquals("apple", apple.getApple());
   }
