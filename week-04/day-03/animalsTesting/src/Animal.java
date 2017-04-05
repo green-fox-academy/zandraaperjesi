@@ -14,4 +14,12 @@ public class Animal {
     this.hunger += 1;
     this.thirst += 1;
   }
+
+  public int getHunger() {
+    return this.hunger;
+  }
+
+  public int getThirst() {
+    return this.thirst;
+  }
 }
