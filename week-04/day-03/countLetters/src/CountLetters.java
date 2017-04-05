@@ -22,6 +22,10 @@ public class CountLetters {
     }
   }
 
+  public Map getLetterMap() {
+    return occurence;
+  }
+
   public int timesInWord(char c) {
     if(occurence.containsKey(c)) {
       return occurence.get(c);
