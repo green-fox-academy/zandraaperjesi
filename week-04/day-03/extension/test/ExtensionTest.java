@@ -58,7 +58,7 @@ class ExtensionTest {
 
   @Test
   void testTranslate_lagopus() {
-    assertEquals("lavagovopuvus", extension.translate("lagopus"));
+    assertEquals("lavagavapuvus", extension.translate("lagapus"));
   }
 
   @Test

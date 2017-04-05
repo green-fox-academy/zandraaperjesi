@@ -30,19 +30,19 @@ public class Extension {
 
   String translate(String hungarian) {
     String teve = hungarian;
-    String lastLetter = hungarian.substring(hungarian.length() - 1);
+    StringBuilder myStringBuilder = new StringBuilder(hungarian);
     int length = teve.length();
     for (int i = 0; i < length; i++) {
       char c = teve.charAt(i);
       if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split(""+c));
-        i+=2;
+        String s = new StringBuilder().append(c).append('v').append(c).toString();
+        teve = teve.substring(0, i) + s + teve.substring(i + 1);
+        i += 2;
+        System.out.println(teve);
         length = teve.length();
       }
     }
-    if(isVowel(lastLetter.charAt(0))) {
-      teve += lastLetter + "v" + lastLetter;
-    }
+    System.out.println(teve);
     return teve;
   }
 }
