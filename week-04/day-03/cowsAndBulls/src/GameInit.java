@@ -6,16 +6,18 @@ public class GameInit {
   private List<Integer> toGuess;
   private int guessesSoFar;
   private String guessResponse = "";
+  private GameState state;
 
   public GameInit() {
     this.guesses = new ArrayList<>();
     this.toGuess = new ArrayList<>();
     guessesSoFar = 0;
     fillNumbers();
+    state = new GameState();
   }
 
-  public int getGuesses() {
-    return this.guessesSoFar;
+  public GameState getState() {
+    return this.state;
   }
 
   public void incrementGuessesSoFar() {
@@ -43,25 +45,34 @@ public class GameInit {
   }
 
   public String guess(int guess) {
-    //
-    //ha guesses >= 8 akkor --> gamestate finished
-    //
     this.guessResponse = "";
     numToArray(guess);
+    int cows = checkGuess();
+    if(cows == 4) {
+      state.endGame();
+      return "You win!";
+    }
+    System.out.println(guesses);
+    System.out.println(toGuess);
+    if(this.guessesSoFar == 7) {
+      state.endGame();
+      return "You ran out of tries";
+    }
+    incrementGuessesSoFar();
+    return this.guessResponse;
+  }
+
+  public int checkGuess() {
+    int cows = 0;
     for (int i = 0; i < 4; i++) {
       if(guesses.get(i) == toGuess.get(i)) {
         this.guessResponse += "cow ";
+        cows += 1;
       }
       else if(toGuess.contains(guesses.get(i))) {
         this.guessResponse += "bull ";
       }
-      //
-      //ha a 4 cow akkor finished es print winner
-      //
     }
-    System.out.println(guesses);
-    System.out.println(toGuess);
-    incrementGuessesSoFar();
-    return this.guessResponse;
+    return cows;
   }
 }

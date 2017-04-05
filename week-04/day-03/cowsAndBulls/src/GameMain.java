@@ -5,7 +5,7 @@ public class GameMain {
     GameInit game = new GameInit();
     Scanner myScanner = new Scanner(System.in);
 
-    while(game.getGuesses() < 8) {
+    while(game.getState().getState().equals("playing")) {
       System.out.println("Take a guess");
       int toGuess = myScanner.nextInt();
       System.out.println(game.guess(toGuess));
