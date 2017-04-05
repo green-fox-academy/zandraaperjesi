@@ -2,7 +2,7 @@ public class RandomNumber {
   private int number;
 
   public void createRandom() {
-    this.number = (int)Math.random()* 4 + 1;
+    this.number = (int)(Math.random()* 9 + 1);
   }
 
   public int getRandom() {
