@@ -52,8 +52,6 @@ public class GameInit {
       state.endGame();
       return "You win!";
     }
-    System.out.println(guesses);
-    System.out.println(toGuess);
     if(this.guessesSoFar == 7) {
       state.endGame();
       return "You ran out of tries";
