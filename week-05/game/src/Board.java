@@ -54,9 +54,7 @@ public class Board extends JComponent implements KeyListener {
         skeletalCoords.add(buffer);
         skeletalCount += 1;
       }
-      System.out.println(skeletalCount);
     }
-    System.out.println(walls);
   }
 
   public int[][] readMap(String mapName) {
