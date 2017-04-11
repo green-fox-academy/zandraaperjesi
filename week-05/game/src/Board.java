@@ -20,11 +20,14 @@ public class Board extends JComponent implements KeyListener {
   List<Point> walls = new ArrayList<>();
   List<Point> skeletalCoords = new ArrayList<>();
   RandomGenerator coordRNG = new RandomGenerator();
+  int[][] mapCoords;
 
   public Board() {
     heroCoordX = 0;
     heroCoordY = 0;
     heroStance = "hero-down.png";
+    mapCoords = readMap("01.txt");
+    getwallCoords();
     spawnSkeletals();
 
     // set the size of your draw board
@@ -53,6 +56,7 @@ public class Board extends JComponent implements KeyListener {
       }
       System.out.println(skeletalCount);
     }
+    System.out.println(walls);
   }
 
   public int[][] readMap(String mapName) {
@@ -78,7 +82,6 @@ public class Board extends JComponent implements KeyListener {
   }
 
   public void drawMap(Graphics graphics) {
-    int[][] mapCoords = readMap("01.txt");
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (mapCoords[i][j] == 0) {
@@ -87,8 +90,17 @@ public class Board extends JComponent implements KeyListener {
         }
         else {
           PositionedImage image = new PositionedImage("wall.png", i * 72, j * 72);
-          walls.add(new Point(i * 72, j * 72));
           image.draw(graphics);
+        }
+      }
+    }
+  }
+
+  public void getwallCoords() {
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+        if (mapCoords[i][j] == 1) {
+          walls.add(new Point(i * 72, j * 72));
         }
       }
     }
