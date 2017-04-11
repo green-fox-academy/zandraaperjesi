@@ -17,6 +17,8 @@ public class Board extends JComponent implements KeyListener {
   String heroStance;
   Character hero = new Character();
   Character skeleton1 = new Character();
+  Character skeleton2 = new Character();
+  Character skeleton3 = new Character();
   List<Point> walls = new ArrayList<>();
   List<Point> skeletalCoords = new ArrayList<>();
   RandomGenerator coordRNG = new RandomGenerator();
@@ -43,6 +45,8 @@ public class Board extends JComponent implements KeyListener {
     drawMap(graphics);
     drawHero(graphics);
     skeleton1.drawChar(graphics, (int) skeletalCoords.get(0).getX(), (int) skeletalCoords.get(0).getY(), "skeleton.png");
+    skeleton2.drawChar(graphics, (int) skeletalCoords.get(1).getX(), (int) skeletalCoords.get(1).getY(), "skeleton.png");
+    skeleton3.drawChar(graphics, (int) skeletalCoords.get(2).getX(), (int) skeletalCoords.get(2).getY(), "skeleton.png");
   }
 
   public void spawnSkeletals() {
