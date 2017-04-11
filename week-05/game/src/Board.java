@@ -88,16 +88,24 @@ public class Board extends JComponent implements KeyListener {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       heroStance = "hero-up.png";
-      heroCoordY -= 72;
+      if(heroCoordY > 0) {
+        heroCoordY -= 72;
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
       heroStance = "hero-down.png";
-      heroCoordY += 72;
+      if(heroCoordY < 648) {
+        heroCoordY += 72;
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
       heroStance = "hero-left.png";
-      heroCoordX -= 72;
+      if(heroCoordX > 0) {
+        heroCoordX -= 72;
+      }
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
       heroStance = "hero-right.png";
-      heroCoordX += 72;
+      if(heroCoordX < 648) {
+        heroCoordX += 72;
+      }
     }
     // and redraw to have a new picture with the new coordinates
     repaint();
