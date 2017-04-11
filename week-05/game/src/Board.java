@@ -16,6 +16,7 @@ public class Board extends JComponent implements KeyListener {
   int heroCoordY;
   String heroStance;
   Character hero = new Character();
+  List<Point> walls = new ArrayList<>();
 
   public Board() {
     heroCoordX = 0;
@@ -65,6 +66,7 @@ public class Board extends JComponent implements KeyListener {
         }
         else {
           PositionedImage image = new PositionedImage("wall.png", i * 72, j * 72);
+          walls.add(new Point(i * 72, j * 72));
           image.draw(graphics);
         }
       }
@@ -88,22 +90,26 @@ public class Board extends JComponent implements KeyListener {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       heroStance = "hero-up.png";
-      if(heroCoordY > 0) {
+      Point nextStep = new Point(heroCoordX, heroCoordY - 72);
+      if(heroCoordY > 0 && !walls.contains(nextStep)) {
         heroCoordY -= 72;
       }
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
       heroStance = "hero-down.png";
-      if(heroCoordY < 648) {
+      Point nextStep = new Point(heroCoordX, heroCoordY + 72);
+      if(heroCoordY < 648 && !walls.contains(nextStep)) {
         heroCoordY += 72;
       }
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
       heroStance = "hero-left.png";
-      if(heroCoordX > 0) {
+      Point nextStep = new Point(heroCoordX - 72, heroCoordY);
+      if(heroCoordX > 0 && !walls.contains(nextStep)) {
         heroCoordX -= 72;
       }
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
       heroStance = "hero-right.png";
-      if(heroCoordX < 648) {
+      Point nextStep = new Point(heroCoordX + 72, heroCoordY);
+      if(heroCoordX < 648 && !walls.contains(nextStep)) {
         heroCoordX += 72;
       }
     }
