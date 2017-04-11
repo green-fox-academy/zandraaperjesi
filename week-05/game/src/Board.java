@@ -18,13 +18,14 @@ public class Board extends JComponent implements KeyListener {
   Character hero = new Character();
   Character skeleton1 = new Character();
   List<Point> walls = new ArrayList<>();
+  List<Point> skeletalCoords = new ArrayList<>();
   RandomGenerator coordRNG = new RandomGenerator();
 
   public Board() {
     heroCoordX = 0;
     heroCoordY = 0;
     heroStance = "hero-down.png";
-    int skeleton1CoordX = coordRNG.ranNum();
+    spawnSkeletals();
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -38,7 +39,20 @@ public class Board extends JComponent implements KeyListener {
     // you can create and draw an image using the class below e.g.
     drawMap(graphics);
     drawHero(graphics);
-    skeleton1.drawChar(graphics, coordRNG.ranNum(), coordRNG.ranNum(), "skeleton.png");
+    skeleton1.drawChar(graphics, (int) skeletalCoords.get(0).getX(), (int) skeletalCoords.get(0).getY(), "skeleton.png");
+  }
+
+  public void spawnSkeletals() {
+    int skeletalCount = 0;
+    while (skeletalCount < 3) {
+      Point buffer = new Point(coordRNG.ranNum(), coordRNG.ranNum());
+      System.out.println(buffer);
+      if(!walls.contains(buffer)) {
+        skeletalCoords.add(buffer);
+        skeletalCount += 1;
+      }
+      System.out.println(skeletalCount);
+    }
   }
 
   public int[][] readMap(String mapName) {
@@ -118,11 +132,9 @@ public class Board extends JComponent implements KeyListener {
       Point nextStep = new Point(heroCoordX + 72, heroCoordY);
       if(heroCoordX < 648 && !walls.contains(nextStep)) {
         heroCoordX += 72;
-        System.out.println("turning right");
       }
     }
     // and redraw to have a new picture with the new coordinates
-    System.out.println(heroStance);
     repaint();
   }
 }
