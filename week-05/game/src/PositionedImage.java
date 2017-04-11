@@ -12,10 +12,10 @@ public class PositionedImage {
   public PositionedImage(String filename, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
+    String pathName = "assets/" + filename;
     try {
-      image = ImageIO.read(new File("assets/" + filename));
+      image = ImageIO.read(new File(pathName));
     } catch (IOException e) {
-      e.printStackTrace();
     }
 
   }

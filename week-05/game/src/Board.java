@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.lang.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,12 +12,15 @@ import java.util.List;
 
 public class Board extends JComponent implements KeyListener {
 
-  int testBoxX;
-  int testBoxY;
+  int heroCoordX;
+  int heroCoordY;
+  String heroStance;
+  Character hero = new Character();
 
   public Board() {
-    testBoxX = 0;
-    testBoxY = 0;
+    heroCoordX = 0;
+    heroCoordY = 0;
+    heroStance = "hero-down.png";
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -29,7 +33,8 @@ public class Board extends JComponent implements KeyListener {
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
     drawMap(graphics);
-    graphics.fillRect(testBoxX, testBoxY, 72, 72);
+    hero.drawChar(graphics,heroCoordX, heroCoordY, heroStance);
+    repaint();
   }
 
   public int[][] readMap(String mapName) {
@@ -39,7 +44,6 @@ public class Board extends JComponent implements KeyListener {
     try {
       Path filePath = Paths.get(mapPath);
       mapLines = Files.readAllLines(filePath);
-      //System.out.println(mapLines);
       for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
           coords[i][j] = (int) mapLines.get(i).charAt(j) - 48;
@@ -55,7 +59,6 @@ public class Board extends JComponent implements KeyListener {
     int[][] mapCoords = readMap("01.txt");
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-        System.out.println(mapCoords[i][j]);
         if (mapCoords[i][j] == 0) {
           PositionedImage image = new PositionedImage("floor.png", i * 72, j * 72);
           image.draw(graphics);
@@ -84,13 +87,17 @@ public class Board extends JComponent implements KeyListener {
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 72;
+      heroStance = "hero-up.png";
+      heroCoordY -= 72;
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 72;
+      heroStance = "hero-down.png";
+      heroCoordY += 72;
     } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 72;
+      heroStance = "hero-left.png";
+      heroCoordX -= 72;
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 72;
+      heroStance = "hero-right.png";
+      heroCoordX += 72;
     }
     // and redraw to have a new picture with the new coordinates
     repaint();
