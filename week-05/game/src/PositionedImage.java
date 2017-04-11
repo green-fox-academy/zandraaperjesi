@@ -16,6 +16,7 @@ public class PositionedImage {
     try {
       image = ImageIO.read(new File(pathName));
     } catch (IOException e) {
+      System.out.println("cant read " + filename);
     }
 
   }

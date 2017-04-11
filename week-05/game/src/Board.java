@@ -16,12 +16,15 @@ public class Board extends JComponent implements KeyListener {
   int heroCoordY;
   String heroStance;
   Character hero = new Character();
+  Character skeleton1 = new Character();
   List<Point> walls = new ArrayList<>();
+  RandomGenerator coordRNG = new RandomGenerator();
 
   public Board() {
     heroCoordX = 0;
     heroCoordY = 0;
     heroStance = "hero-down.png";
+    int skeleton1CoordX = coordRNG.ranNum();
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -34,8 +37,8 @@ public class Board extends JComponent implements KeyListener {
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
     drawMap(graphics);
-    hero.drawChar(graphics,heroCoordX, heroCoordY, heroStance);
-    repaint();
+    drawHero(graphics);
+    skeleton1.drawChar(graphics, coordRNG.ranNum(), coordRNG.ranNum(), "skeleton.png");
   }
 
   public int[][] readMap(String mapName) {
@@ -54,6 +57,10 @@ public class Board extends JComponent implements KeyListener {
       System.out.println("couldn't open file");
     }
     return coords;
+  }
+
+  public void drawHero(Graphics g) {
+    hero.drawChar(g, heroCoordX, heroCoordY, heroStance);
   }
 
   public void drawMap(Graphics graphics) {
@@ -111,9 +118,11 @@ public class Board extends JComponent implements KeyListener {
       Point nextStep = new Point(heroCoordX + 72, heroCoordY);
       if(heroCoordX < 648 && !walls.contains(nextStep)) {
         heroCoordX += 72;
+        System.out.println("turning right");
       }
     }
     // and redraw to have a new picture with the new coordinates
+    System.out.println(heroStance);
     repaint();
   }
 }
