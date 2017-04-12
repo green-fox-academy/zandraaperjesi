@@ -19,8 +19,9 @@ public class Board extends JComponent implements KeyListener {
   Character skeleton1 = new Character();
   Character skeleton2 = new Character();
   Character skeleton3 = new Character();
+  Character boss = new Character();
   List<Point> walls = new ArrayList<>();
-  List<Point> skeletalCoords = new ArrayList<>();
+  List<Point> enemyCoords = new ArrayList<>();
   RandomGenerator coordRNG = new RandomGenerator();
   int[][] mapCoords;
 
@@ -30,7 +31,7 @@ public class Board extends JComponent implements KeyListener {
     heroStance = "hero-down.png";
     mapCoords = readMap("01.txt");
     getwallCoords();
-    spawnSkeletals();
+    spawnEnemies();
 
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
@@ -44,18 +45,18 @@ public class Board extends JComponent implements KeyListener {
     // you can create and draw an image using the class below e.g.
     drawMap(graphics);
     drawHero(graphics);
-    skeleton1.drawChar(graphics, (int) skeletalCoords.get(0).getX(), (int) skeletalCoords.get(0).getY(), "skeleton.png");
-    skeleton2.drawChar(graphics, (int) skeletalCoords.get(1).getX(), (int) skeletalCoords.get(1).getY(), "skeleton.png");
-    skeleton3.drawChar(graphics, (int) skeletalCoords.get(2).getX(), (int) skeletalCoords.get(2).getY(), "skeleton.png");
+    skeleton1.drawChar(graphics, (int) enemyCoords.get(0).getX(), (int) enemyCoords.get(0).getY(), "skeleton.png");
+    skeleton2.drawChar(graphics, (int) enemyCoords.get(1).getX(), (int) enemyCoords.get(1).getY(), "skeleton.png");
+    skeleton3.drawChar(graphics, (int) enemyCoords.get(2).getX(), (int) enemyCoords.get(2).getY(), "skeleton.png");
+    boss.drawChar(graphics, (int) enemyCoords.get(3).getX(), (int) enemyCoords.get(3).getY(), "boss.png");
   }
 
-  public void spawnSkeletals() {
+  public void spawnEnemies() {
     int skeletalCount = 0;
-    while (skeletalCount < 3) {
+    while (skeletalCount < 4) {
       Point buffer = new Point(coordRNG.ranNum(), coordRNG.ranNum());
-      System.out.println(buffer);
-      if(!walls.contains(buffer)) {
-        skeletalCoords.add(buffer);
+      if(!walls.contains(buffer) && !enemyCoords.contains(buffer)) {
+        enemyCoords.add(buffer);
         skeletalCount += 1;
       }
     }
@@ -87,11 +88,11 @@ public class Board extends JComponent implements KeyListener {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (mapCoords[i][j] == 0) {
-          PositionedImage image = new PositionedImage("floor.png", i * 72, j * 72);
+          PositionedImage image = new PositionedImage("floor.png", j * 72, i * 72);
           image.draw(graphics);
         }
         else {
-          PositionedImage image = new PositionedImage("wall.png", i * 72, j * 72);
+          PositionedImage image = new PositionedImage("wall.png", j * 72, i * 72);
           image.draw(graphics);
         }
       }
@@ -102,7 +103,7 @@ public class Board extends JComponent implements KeyListener {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (mapCoords[i][j] == 1) {
-          walls.add(new Point(i * 72, j * 72));
+          walls.add(new Point(j * 72, i * 72));
         }
       }
     }

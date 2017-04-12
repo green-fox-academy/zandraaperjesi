@@ -1,15 +1,22 @@
-import java.awt.*;
+public class Character extends GameObject{
 
-public class Character {
-  int xPos;
-  int yPos;
-  String spriteOrientation = "hero-down.png";
+  public Character(int positionX, int positionY, String skin) {
+    super(positionX, positionY, skin);
+  }
 
-  public void drawChar(Graphics g, int posX, int posY, String orient) {
-    this.xPos = posX;
-    this.yPos = posY;
-    this.spriteOrientation = orient;
-    PositionedImage image = new PositionedImage(spriteOrientation, xPos, yPos);
-    image.draw(g);
+  public void moveUp() {
+    this.positionY -= 72;
+  }
+
+  public void moveDown() {
+    this.positionY += 72;
+  }
+
+  public void moveLeft() {
+    this.positionX -= 72;
+  }
+
+  public void moveRight() {
+    this.positionX += 72;
   }
 }
