@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class GameObject {
+public abstract class GameObject {
   int positionX;
   int positionY;
   String skin;

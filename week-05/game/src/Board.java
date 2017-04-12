@@ -2,40 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 import java.lang.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.List;
+
 
 public class Board extends JComponent implements KeyListener {
-
-  int heroCoordX;
-  int heroCoordY;
-  String heroStance;
-  Character hero = new Character();
-  Character skeleton1 = new Character();
-  Character skeleton2 = new Character();
-  Character skeleton3 = new Character();
-  Character boss = new Character();
-  List<Point> walls = new ArrayList<>();
-  List<Point> enemyCoords = new ArrayList<>();
-  RandomGenerator coordRNG = new RandomGenerator();
-  int[][] mapCoords;
+GameInit game = new GameInit();
 
   public Board() {
-    heroCoordX = 0;
-    heroCoordY = 0;
-    heroStance = "hero-down.png";
-    mapCoords = readMap("01.txt");
-    getwallCoords();
-    spawnEnemies();
-
     // set the size of your draw board
     setPreferredSize(new Dimension(720, 720));
     setVisible(true);
+
   }
 
   @Override
@@ -43,70 +20,6 @@ public class Board extends JComponent implements KeyListener {
     super.paint(graphics);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    drawMap(graphics);
-    drawHero(graphics);
-    skeleton1.drawChar(graphics, (int) enemyCoords.get(0).getX(), (int) enemyCoords.get(0).getY(), "skeleton.png");
-    skeleton2.drawChar(graphics, (int) enemyCoords.get(1).getX(), (int) enemyCoords.get(1).getY(), "skeleton.png");
-    skeleton3.drawChar(graphics, (int) enemyCoords.get(2).getX(), (int) enemyCoords.get(2).getY(), "skeleton.png");
-    boss.drawChar(graphics, (int) enemyCoords.get(3).getX(), (int) enemyCoords.get(3).getY(), "boss.png");
-  }
-
-  public void spawnEnemies() {
-    int skeletalCount = 0;
-    while (skeletalCount < 4) {
-      Point buffer = new Point(coordRNG.ranNum(), coordRNG.ranNum());
-      if(!walls.contains(buffer) && !enemyCoords.contains(buffer)) {
-        enemyCoords.add(buffer);
-        skeletalCount += 1;
-      }
-    }
-  }
-
-  public int[][] readMap(String mapName) {
-    String mapPath = "assets/" + mapName;
-    List<String> mapLines = new ArrayList<>();
-    int[][] coords = new int[10][10];
-    try {
-      Path filePath = Paths.get(mapPath);
-      mapLines = Files.readAllLines(filePath);
-      for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-          coords[i][j] = (int) mapLines.get(i).charAt(j) - 48;
-        }
-      }
-    } catch (IOException ex) {
-      System.out.println("couldn't open file");
-    }
-    return coords;
-  }
-
-  public void drawHero(Graphics g) {
-    hero.drawChar(g, heroCoordX, heroCoordY, heroStance);
-  }
-
-  public void drawMap(Graphics graphics) {
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        if (mapCoords[i][j] == 0) {
-          PositionedImage image = new PositionedImage("floor.png", j * 72, i * 72);
-          image.draw(graphics);
-        }
-        else {
-          PositionedImage image = new PositionedImage("wall.png", j * 72, i * 72);
-          image.draw(graphics);
-        }
-      }
-    }
-  }
-
-  public void getwallCoords() {
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        if (mapCoords[i][j] == 1) {
-          walls.add(new Point(j * 72, i * 72));
-        }
-      }
-    }
   }
 
   // To be a KeyListener the class needs to have these 3 methods in it
@@ -125,8 +38,7 @@ public class Board extends JComponent implements KeyListener {
   public void keyReleased(KeyEvent e) {
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      heroStance = "hero-up.png";
-      Point nextStep = new Point(heroCoordX, heroCoordY - 72);
+      Point nextStep = new Point(, heroCoordY - 72);
       if(heroCoordY > 0 && !walls.contains(nextStep)) {
         heroCoordY -= 72;
       }
