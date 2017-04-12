@@ -9,13 +9,14 @@ public class Board extends JComponent implements KeyListener {
 GameInit game;
 List<GameObject> gameObjects;
 int mapLvl;
+  int[] heroStats;
 
   public Board() {
     setPreferredSize(new Dimension(1000, 720));
     setVisible(true);
     game = new GameInit("01.txt");
     gameObjects = game.start();
-    String herostats;
+    heroStats = game.hero.getStats();
     mapLvl = 1;
   }
 
@@ -26,7 +27,7 @@ int mapLvl;
       PositionedImage p = new PositionedImage(o.skin, o.positionX, o.positionY);
       p.draw(graphics);
     }
-    graphics.drawString("Test", 750, 100);
+    graphics.drawString("Hero (Level " + heroStats[3] + ") HP: " + heroStats[0] + " | DP: " + heroStats[1] + " | SP: " + heroStats[2], 750, 100);
   }
 
   @Override

@@ -13,6 +13,11 @@ public abstract class Character extends GameObject{
     this.lvl = 1;
   }
 
+  public int[] getStats() {
+    int[] toReturn = {this.hp, this.dp, this.sp, this.lvl};
+    return toReturn;
+  }
+
   public void moveUp() {
     this.positionY -= 72;
   }

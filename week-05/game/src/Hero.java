@@ -3,10 +3,15 @@ import java.util.List;
 
 public class Hero extends Character {
   private int movecount;
+  private RandomGenerator die;
 
   public Hero(int positionX, int positionY, String skin, List<Point> walls) {
     super(positionX, positionY, skin, walls);
+    this.die = new RandomGenerator();
     this.movecount = 0;
+    this.hp = 20 + 3 * die.outOfSix();
+    this.dp = 2 * die.outOfSix();
+    this.sp = 5 + die.outOfSix();
   }
 
   public int getMovecount() {
