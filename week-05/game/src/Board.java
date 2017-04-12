@@ -8,12 +8,15 @@ import java.util.List;
 public class Board extends JComponent implements KeyListener {
 GameInit game;
 List<GameObject> gameObjects;
+int mapLvl;
 
   public Board() {
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(1000, 720));
     setVisible(true);
     game = new GameInit("01.txt");
     gameObjects = game.start();
+    String herostats;
+    mapLvl = 1;
   }
 
   @Override
@@ -23,6 +26,7 @@ List<GameObject> gameObjects;
       PositionedImage p = new PositionedImage(o.skin, o.positionX, o.positionY);
       p.draw(graphics);
     }
+    graphics.drawString("Test", 750, 100);
   }
 
   @Override

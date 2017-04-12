@@ -4,9 +4,24 @@ import java.util.List;
 public class Monster extends Character{
   private RandomGenerator oneOOFour;
 
-  public Monster(int positionX, int positionY, String skin, List<Point> walls) {
+  public Monster(int positionX, int positionY, String skin, List<Point> walls, int mapLevel) {
     super(positionX, positionY, skin, walls);
     this.oneOOFour = new RandomGenerator();
+    this.lvl = mapLevel;
+    setLevel();
+  }
+
+  public void setLevel() {
+    int rnLevel = oneOOFour.outOfTen();
+    if(rnLevel < 5) {
+      this.lvl += 0;
+    }
+    else if(rnLevel > 8) {
+      this.lvl += 2;
+    }
+    else {
+      this.lvl += 1;
+    }
   }
 
   public void move() {
