@@ -18,19 +18,28 @@ public class Hero extends Character {
 
   @Override
   public void moveDown() {
-    this.positionY += 72;
     this.skin = "hero-down.png";
+    Point nextStep = new Point(this.positionX, this.positionY + 72);
+    if(this.positionY < 648 && !this.walls.contains(nextStep)) {
+      this.positionY += 72;
+    }
   }
 
   @Override
   public void moveLeft() {
-    this.positionX -= 72;
     this.skin = "hero-left.png";
+    Point nextStep = new Point(this.positionX - 72, this.positionY);
+    if(this.positionX > 0 && !this.walls.contains(nextStep)) {
+      this.positionX -= 72;
+    }
   }
 
   @Override
   public void moveRight() {
-    this.positionX += 72;
     this.skin = "hero-right.png";
+    Point nextStep = new Point(this.positionX + 72, this.positionY);
+    if(this.positionX < 648 && !this.walls.contains(nextStep)) {
+      this.positionX += 72;
+    }
   }
 }
