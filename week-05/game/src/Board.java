@@ -39,10 +39,7 @@ List<GameObject> gameObjects;
   public void keyReleased(KeyEvent e) {
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
-      Point nextStep = new Point(game.hero.positionX, game.hero.positionY - 72);
-      if(game.hero.positionY > 0 && !game.walls.contains(nextStep)) {
         game.hero.moveUp();
-      }
     } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
       Point nextStep = new Point(game.hero.positionX, game.hero.positionY + 72);
       if(game.hero.positionY < 648 && !game.walls.contains(nextStep)) {

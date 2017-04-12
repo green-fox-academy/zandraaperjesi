@@ -1,7 +1,11 @@
+import java.awt.*;
+import java.util.List;
 public abstract class Character extends GameObject{
+  List<Point> walls;
 
-  public Character(int positionX, int positionY, String skin) {
+  public Character(int positionX, int positionY, String skin, List<Point> walls) {
     super(positionX, positionY, skin);
+    this.walls = walls;
   }
 
   public void moveUp() {
