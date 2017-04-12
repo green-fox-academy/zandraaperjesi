@@ -4,23 +4,35 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 
 public class GameInit {
   Character hero;
-  //Character skeleton1 = new Character();
-  //Character skeleton2 = new Character();
-  //Character skeleton3 = new Character();
-  //Character boss = new Character();
-  java.util.List<Point> walls = new ArrayList<>();
-  java.util.List<Point> enemyCoords = new ArrayList<>();
-  RandomGenerator coordRNG = new RandomGenerator();
+  List<Point> walls;
+  java.util.List<GameObject> allObjects;
+  java.util.List<Point> enemyCoords;
+  RandomGenerator coordRNG;
   int[][] mapCoords;
-  //getwallCoords();
-  //spawnEnemies();
 
-  public GameInit() {
+  public GameInit(String map) {
     this.hero = new Hero(0, 0, "hero-down.png");
-    mapCoords = readMap("01.txt");
+    mapCoords = readMap(map);
+    walls = new ArrayList<>();
+    allObjects = new ArrayList<>();
+    enemyCoords = new ArrayList<>();
+    coordRNG = new RandomGenerator();
+    getwallCoords();
+    initMap();
+    spawnEnemies();
+    allObjects.add(hero);
+    allObjects.add(new Monster((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png"));
+    allObjects.add(new Hero((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png"));
+    allObjects.add(new Hero((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png"));
+    allObjects.add(new Hero((int)enemyCoords.get(3).getX(), (int)enemyCoords.get(3).getY(), "skeleton.png"));
+  }
+
+  public List<GameObject> start() {
+    return allObjects;
   }
 
   public int[][] readMap(String mapName) {
@@ -41,16 +53,16 @@ public class GameInit {
     return coords;
   }
 
-  public void drawMap(Graphics graphics) {
+  public void initMap() {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (mapCoords[i][j] == 0) {
-          PositionedImage image = new PositionedImage("floor.png", i * 72, j * 72);
-          image.draw(graphics);
+          Tile newTile = new Tile(j * 72, i * 72, "floor.png", false);
+          allObjects.add(newTile);
         }
         else {
-          PositionedImage image = new PositionedImage("wall.png", i * 72, j * 72);
-          image.draw(graphics);
+          Tile newTile = new Tile(j * 72, i * 72, "wall.png", true);
+          allObjects.add(newTile);
         }
       }
     }
