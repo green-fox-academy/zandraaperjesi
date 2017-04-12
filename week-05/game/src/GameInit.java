@@ -7,7 +7,11 @@ import java.util.*;
 import java.util.List;
 
 public class GameInit {
-  Character hero;
+  Hero hero;
+  Monster boss;
+  Monster skeleton1;
+  Monster skeleton2;
+  Monster skeleton3;
   List<Point> walls;
   java.util.List<GameObject> allObjects;
   java.util.List<Point> enemyCoords;
@@ -24,11 +28,15 @@ public class GameInit {
     initMap();
     spawnEnemies();
     this.hero = new Hero(0, 0, "hero-down.png", walls);
+    this.boss = new Monster((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png", walls);
+    this.skeleton1 = new Monster((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls);
+    this.skeleton2 = new Monster((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png", walls);
+    this.skeleton3 = new Monster((int)enemyCoords.get(3).getX(), (int)enemyCoords.get(3).getY(), "skeleton.png", walls);
     allObjects.add(hero);
-    allObjects.add(new Monster((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png", walls));
-    allObjects.add(new Hero((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls));
-    allObjects.add(new Hero((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png", walls));
-    allObjects.add(new Hero((int)enemyCoords.get(3).getX(), (int)enemyCoords.get(3).getY(), "skeleton.png", walls));
+    allObjects.add(boss);
+    allObjects.add(skeleton1);
+    allObjects.add(skeleton2);
+    allObjects.add(skeleton3);
   }
 
   public List<GameObject> start() {

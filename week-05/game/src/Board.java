@@ -47,6 +47,12 @@ List<GameObject> gameObjects;
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
         game.hero.moveRight();
     }
+    if(game.hero.getMovecount() == 0) {
+      game.skeleton1.move();
+      game.skeleton2.move();
+      game.skeleton3.move();
+      game.boss.move();
+    }
     repaint();
   }
 }
