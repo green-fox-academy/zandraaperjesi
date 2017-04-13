@@ -1,11 +1,19 @@
 import java.awt.*;
 import java.util.List;
 public abstract class Character extends GameObject{
+  private RandomGenerator die = new RandomGenerator();
   List<Point> walls;
   int hp;
   int dp;
   int sp;
   int lvl;
+
+  public void attack(Character enemy) {
+    int sv = this.sp + die.outOfSix() * 2;
+    if(sv > enemy.dp) {
+      enemy.dp -= sv - enemy.dp;
+    }
+  }
 
   public Character(int positionX, int positionY, String skin, List<Point> walls) {
     super(positionX, positionY, skin);

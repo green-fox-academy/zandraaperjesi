@@ -8,6 +8,7 @@ import java.util.List;
 public class Board extends JComponent implements KeyListener {
 GameInit game;
 List<GameObject> gameObjects;
+List<Monster> monsters;
 int mapLvl;
   int[] heroStats;
 
@@ -16,6 +17,7 @@ int mapLvl;
     setVisible(true);
     game = new GameInit("01.txt");
     gameObjects = game.start();
+    monsters = game.getMonsters();
     heroStats = game.hero.getStats();
     mapLvl = 1;
   }
@@ -52,11 +54,28 @@ int mapLvl;
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
         game.hero.moveRight();
     }
-    if(game.hero.getMovecount() == 0) {
+    if (game.hero.getMovecount() == 0) {
       game.skeleton1.move();
       game.skeleton2.move();
       game.skeleton3.move();
       game.boss.move();
+    }
+    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      for (Monster m : monsters) {
+        if (m.positionX == game.hero.positionX && m.positionY == game.hero.positionY) {
+          if(game.hero.getMovecount() == 0) {
+            m.attack(game.hero);
+          }
+          else {
+            game.hero.attack(m);
+          }
+        }
+      }
+    }
+    for (Monster m : monsters) {
+      if (m.hp < 1 && gameObjects.contains(m)) {
+        gameObjects.remove(m);
+      }
     }
     repaint();
   }

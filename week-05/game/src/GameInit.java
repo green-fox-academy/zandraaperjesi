@@ -18,6 +18,7 @@ public class GameInit {
   java.util.List<Point> enemyCoords;
   RandomGenerator coordRNG;
   int[][] mapCoords;
+  List<Monster> monsterList;
 
   public GameInit(String map) {
     mapCoords = readMap(map);
@@ -25,6 +26,7 @@ public class GameInit {
     walls = new ArrayList<>();
     allObjects = new ArrayList<>();
     enemyCoords = new ArrayList<>();
+    monsterList = new ArrayList<>();
     coordRNG = new RandomGenerator();
     getwallCoords();
     initMap();
@@ -39,10 +41,18 @@ public class GameInit {
     allObjects.add(skeleton1);
     allObjects.add(skeleton2);
     allObjects.add(skeleton3);
+    monsterList.add(boss);
+    monsterList.add(skeleton1);
+    monsterList.add(skeleton2);
+    monsterList.add(skeleton3);
   }
 
   public List<GameObject> start() {
     return allObjects;
+  }
+
+  public List<Monster> getMonsters() {
+    return monsterList;
   }
 
   public int[][] readMap(String mapName) {
