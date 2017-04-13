@@ -11,7 +11,7 @@ public abstract class Character extends GameObject{
   public void attack(Character enemy) {
     int sv = this.sp + die.outOfSix() * 2;
     if(sv > enemy.dp) {
-      enemy.dp -= sv - enemy.dp;
+      enemy.hp -= sv - enemy.dp;
     }
   }
 

@@ -65,9 +65,13 @@ int mapLvl;
         if (m.positionX == game.hero.positionX && m.positionY == game.hero.positionY) {
           if(game.hero.getMovecount() == 0) {
             m.attack(game.hero);
+            game.hero.attack(m);
+            System.out.println(game.hero.hp);
           }
           else {
             game.hero.attack(m);
+            m.attack(game.hero);
+            System.out.println(game.hero.hp);
           }
         }
       }
@@ -77,6 +81,7 @@ int mapLvl;
         gameObjects.remove(m);
       }
     }
+    heroStats = game.hero.getStats();
     repaint();
   }
 }
