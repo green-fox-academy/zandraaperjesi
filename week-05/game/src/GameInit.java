@@ -33,7 +33,7 @@ public class GameInit {
     spawnEnemies();
     this.hero = new Hero(0, 0, "hero-down.png", walls);
     this.boss = new Boss((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png", walls, mapLevel);
-    this.skeleton1 = new Skeleton((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls, mapLevel);
+    this.skeleton1 = new Skeleton((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls, mapLevel, 1);
     this.skeleton2 = new Skeleton((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png", walls, mapLevel);
     this.skeleton3 = new Skeleton((int)enemyCoords.get(3).getX(), (int)enemyCoords.get(3).getY(), "skeleton.png", walls, mapLevel);
     allObjects.add(hero);

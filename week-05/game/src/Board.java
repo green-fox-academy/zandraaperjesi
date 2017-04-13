@@ -3,14 +3,17 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board extends JComponent implements KeyListener {
 GameInit game;
 List<GameObject> gameObjects;
 List<Monster> monsters;
+List<int[]> toPrint;
 int mapLvl;
-  int[] heroStats;
+int[] heroStats;
+HubWriter hubWriter;
 
   public Board() {
     setPreferredSize(new Dimension(1000, 720));
@@ -20,6 +23,9 @@ int mapLvl;
     monsters = game.getMonsters();
     heroStats = game.hero.getStats();
     mapLvl = 1;
+    toPrint = new ArrayList<>();
+    toPrint.add(heroStats);
+    hubWriter = new HubWriter();
   }
 
   @Override
@@ -29,7 +35,7 @@ int mapLvl;
       PositionedImage p = new PositionedImage(o.skin, o.positionX, o.positionY);
       p.draw(graphics);
     }
-    graphics.drawString("Hero (Level " + heroStats[3] + ") HP: " + heroStats[0] + " | DP: " + heroStats[1] + " | SP: " + heroStats[2], 750, 100);
+    hubWriter.writeHub(toPrint, graphics);
   }
 
   @Override
@@ -44,6 +50,7 @@ int mapLvl;
 
   @Override
   public void keyReleased(KeyEvent e) {
+    List<int[]> buffer= new ArrayList<>();
 
     if (e.getKeyCode() == KeyEvent.VK_UP) {
         game.hero.moveUp();
@@ -79,9 +86,17 @@ int mapLvl;
     for (Monster m : monsters) {
       if (m.hp < 1 && gameObjects.contains(m)) {
         gameObjects.remove(m);
+        monsters.remove(m);
       }
     }
     heroStats = game.hero.getStats();
+    for (Monster m : monsters) {
+      if (m.positionX == game.hero.positionX && m.positionY == game.hero.positionY) {
+        buffer.add(m.getStats());
+      }
+    }
+    buffer.add(heroStats);
+    toPrint = buffer;
     repaint();
   }
 }
