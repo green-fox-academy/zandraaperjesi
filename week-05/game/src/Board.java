@@ -54,7 +54,7 @@ int mapLvl;
     } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
         game.hero.moveRight();
     }
-    if (game.hero.getMovecount() == 0) {
+    if (game.hero.getMovecount() == 0 && e.getKeyCode() != KeyEvent.VK_SPACE) {
       game.skeleton1.move();
       game.skeleton2.move();
       game.skeleton3.move();
