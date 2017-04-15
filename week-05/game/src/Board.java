@@ -83,10 +83,10 @@ HubWriter hubWriter;
         }
       }
     }
-    for (Monster m : monsters) {
-      if (m.hp < 1 && gameObjects.contains(m)) {
-        gameObjects.remove(m);
-        monsters.remove(m);
+    for (int i = 0; i < monsters.size(); i++) {
+      if (monsters.get(i).hp < 1 && gameObjects.contains(monsters.get(i))) {
+        gameObjects.remove(monsters.get(i));
+        monsters.remove(monsters.get(i));
       }
     }
     heroStats = game.hero.getStats();

@@ -1,18 +1,18 @@
 import java.awt.*;
 import java.util.List;
 
-public class Monster extends Character{
-  private RandomGenerator oneOOFour;
+public abstract class Monster extends Character{
+  private RandomGenerator die;
 
   public Monster(int positionX, int positionY, String skin, List<Point> walls, int mapLevel) {
     super(positionX, positionY, skin, walls);
-    this.oneOOFour = new RandomGenerator();
+    this.die = new RandomGenerator();
     this.lvl = mapLevel;
     setLevel();
   }
 
   public void setLevel() {
-    int rnLevel = oneOOFour.outOfTen();
+    int rnLevel = die.outOfTen();
     if(rnLevel < 5) {
       this.lvl += 0;
     }
@@ -25,7 +25,7 @@ public class Monster extends Character{
   }
 
   public void move() {
-    int ranNum = oneOOFour.outOfFour();
+    int ranNum = die.outOfFour();
 
     if(ranNum == 0) {
       if(this.moveMUp() == 1) {
