@@ -49,6 +49,32 @@ public class GameInit {
     monsterList.add(skeleton3);
   }
 
+  public void reInit(String map) {
+    mapCoords = readMap(map);
+    mapLevel += 1;
+    walls = new ArrayList<>();
+    allObjects = new ArrayList<>();
+    enemyCoords = new ArrayList<>();
+    monsterList = new ArrayList<>();
+    coordRNG = new RandomGenerator();
+    getwallCoords();
+    initMap();
+    spawnEnemies();
+    this.boss = new Boss((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png", walls, mapLevel);
+    this.skeleton1 = new Skeleton((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls, mapLevel, 1);
+    this.skeleton2 = new Skeleton((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png", walls, mapLevel);
+    this.skeleton3 = new Skeleton((int)enemyCoords.get(3).getX(), (int)enemyCoords.get(3).getY(), "skeleton.png", walls, mapLevel);
+    allObjects.add(hero);
+    allObjects.add(boss);
+    allObjects.add(skeleton1);
+    allObjects.add(skeleton2);
+    allObjects.add(skeleton3);
+    monsterList.add(boss);
+    monsterList.add(skeleton1);
+    monsterList.add(skeleton2);
+    monsterList.add(skeleton3);
+  }
+
   public List<GameObject> start() {
     return allObjects;
   }

@@ -101,6 +101,19 @@ HubWriter hubWriter;
     }
     buffer.add(heroStats);
     toPrint = buffer;
+    if (game.hero.hasKey == 1 && !monsters.contains(game.boss)) {
+      game.hero.positionY = 0;
+      game.hero.positionX = 0;
+      game.hero.hasKey = 0;
+      game.reInit("01.txt");
+      gameObjects = game.start();
+      monsters = game.getMonsters();
+      heroStats = game.hero.getStats();
+      mapLvl += 1;
+      toPrint = new ArrayList<>();
+      toPrint.add(heroStats);
+      hubWriter = new HubWriter();
+    }
     repaint();
   }
 }
