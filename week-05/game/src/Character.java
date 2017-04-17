@@ -7,6 +7,7 @@ public abstract class Character extends GameObject{
   int dp;
   int sp;
   int lvl;
+  int hasKey;
 
   public void attack(Character enemy) {
     int sv = this.sp + die.outOfSix() * 2;
@@ -19,6 +20,7 @@ public abstract class Character extends GameObject{
     super(positionX, positionY, skin);
     this.walls = walls;
     this.lvl = 1;
+    this.hasKey = 0;
   }
 
   public int[] getStats() {

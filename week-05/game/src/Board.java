@@ -85,8 +85,12 @@ HubWriter hubWriter;
     }
     for (int i = 0; i < monsters.size(); i++) {
       if (monsters.get(i).hp < 1 && gameObjects.contains(monsters.get(i))) {
+        if (monsters.get(i).hasKey == 1) {
+          game.hero.hasKey = 1;
+        }
         gameObjects.remove(monsters.get(i));
         monsters.remove(monsters.get(i));
+        game.hero.levelUp();
       }
     }
     heroStats = game.hero.getStats();

@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.List;
 
 public class GameInit {
-  int mapLevel;
+  int mapLevel = 0;
   Hero hero;
   Monster boss;
   Monster skeleton1;
@@ -22,7 +22,7 @@ public class GameInit {
 
   public GameInit(String map) {
     mapCoords = readMap(map);
-    mapLevel = 1;
+    mapLevel += 1;
     walls = new ArrayList<>();
     allObjects = new ArrayList<>();
     enemyCoords = new ArrayList<>();
@@ -31,7 +31,9 @@ public class GameInit {
     getwallCoords();
     initMap();
     spawnEnemies();
-    this.hero = new Hero(0, 0, "hero-down.png", walls);
+    if (hero == null) {
+      this.hero = new Hero(0, 0, "hero-down.png", walls);
+    }
     this.boss = new Boss((int)enemyCoords.get(0).getX(), (int)enemyCoords.get(0).getY(), "boss.png", walls, mapLevel);
     this.skeleton1 = new Skeleton((int)enemyCoords.get(1).getX(), (int)enemyCoords.get(1).getY(), "skeleton.png", walls, mapLevel, 1);
     this.skeleton2 = new Skeleton((int)enemyCoords.get(2).getX(), (int)enemyCoords.get(2).getY(), "skeleton.png", walls, mapLevel);

@@ -14,6 +14,13 @@ public class Hero extends Character {
     this.sp = 5 + die.outOfSix();
   }
 
+  public void levelUp() {
+    this.lvl += 1;
+    this.hp += die.outOfSix();
+    this.dp += die.outOfSix();
+    this.sp += die.outOfSix();
+  }
+
   public int getMovecount() {
     return this.movecount % 2;
   }

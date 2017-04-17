@@ -9,5 +9,8 @@ public class Boss extends Monster{
     this.hp = 2 * this.lvl * die.outOfSix() + die.outOfSix();
     this.dp = this.lvl / 2 * die.outOfSix() + die.outOfSix() / 2;
     this.sp = this.lvl * die.outOfSix() + this.lvl;
+    if(this.hp <= 0) {
+      this.hp = 1;
+    }
   }
 }
