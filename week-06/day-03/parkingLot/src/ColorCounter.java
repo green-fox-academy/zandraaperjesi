@@ -18,5 +18,10 @@ public class ColorCounter {
         carColorOccurs.put(c.color.toString(), 1);
       }
     }
+
+    for (Map.Entry<String, Integer> e : carColorOccurs.entrySet()) {
+      System.out.println(e.getKey() + " " + e.getValue());
+
+    }
   }
 }

@@ -7,7 +7,8 @@ public class Main {
   public static void main(String[] args) {
     List<Car> allCars = new ArrayList<>();
     Map<String, Integer> carOccurs = new HashMap<>();
-    Map<String, Integer> carTypeOccurs = new HashMap<>();
+    ColorCounter myColorCounter;
+    TypeCounter myTypeCounter;
 
     for (int i = 0; i < 256; i++) {
       Car bufferCar = new Car(CarType.returnType(), CarColor.returnColor());
@@ -21,13 +22,21 @@ public class Main {
       allCars.add(bufferCar);
     }
 
-    for (Car c : allCars) {
-      if (carTypeOccurs.containsKey(c.type.toString())) {
-        carTypeOccurs.put(c.type.toString(), carTypeOccurs.get(c.type.toString()) + 1);
-      }
-      else {
-        carTypeOccurs.put(c.type.toString(), 1);
+    myColorCounter = new ColorCounter(allCars);
+    myTypeCounter = new TypeCounter(allCars);
+
+    myColorCounter.countColors();
+    myTypeCounter.countTypes();
+
+
+    int occurs = 0;
+    String carType = "";
+    for (Map.Entry<String, Integer> e : carOccurs.entrySet()) {
+      if (e.getValue() > occurs) {
+        occurs = e.getValue();
+        carType = e.getKey();
       }
     }
+    System.out.println(carType + " " + occurs);
   }
 }
