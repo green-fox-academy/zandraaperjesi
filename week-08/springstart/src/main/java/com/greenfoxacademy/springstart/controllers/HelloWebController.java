@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.awt.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
@@ -19,6 +20,7 @@ public class HelloWebController {
     model.addAttribute("name", name);
     model.addAttribute("idCount", idCount.addAndGet(1));
     model.addAttribute("hello", hellos[(int) (Math.random() * hellos.length)]);
+    model.addAttribute("color", "color:rgb(" + (int)(Math.random() * 255) + ", " + (int)(Math.random() * 255) + ", " +  (int)(Math.random() * 255) + "); font-size: " + (int)(Math.random() * 70) + "px;");
     return "greeting";
   }
 }
