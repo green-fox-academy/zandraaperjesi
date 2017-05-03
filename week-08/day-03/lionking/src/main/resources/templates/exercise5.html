@@ -6,9 +6,9 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<ul th:each="account : ${accounts}">
-    <li th:if="${account.isKing()} == true" style = "color: gold;" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></li>
-    <li th:unless="${account.isKing()} == true" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></li>
-</ul>
+<p th:each="account : ${accounts}">
+    <span th:if="${account.isKing()} == true" style = "color: gold;" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></span>
+    <span th:unless="${account.isKing()} == true" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType} + ' '"></span><span th:text="(${account.isGood()} == true) ? 'good one' : 'bad guy' "></span>
+</p>
 </body>
 </html>

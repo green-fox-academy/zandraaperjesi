@@ -12,11 +12,11 @@ public class ControllerEx5 {
   @RequestMapping("/exercise5")
   public String exerciseOne(Model model) {
     List<BankAccount> accounts= new ArrayList<>();
-    BankAccount simbaAcc = new BankAccount("Simba", 2000, "lion", false);
-    BankAccount mufasaAcc = new BankAccount("Mufasa", 112000, "lion", true);
-    BankAccount scarAcc = new BankAccount("Scar", 5000, "lion", false);
-    BankAccount nalaAcc = new BankAccount("Rafiki", 2000, "mandrill", false);
-    BankAccount zazuAcc = new BankAccount("Zazu", 6000, "hornbill", false);
+    BankAccount simbaAcc = new BankAccount("Simba", 2000, "lion", false, true);
+    BankAccount mufasaAcc = new BankAccount("Mufasa", 112000, "lion", true, true);
+    BankAccount scarAcc = new BankAccount("Scar", 5000, "lion", false, false);
+    BankAccount nalaAcc = new BankAccount("Rafiki", 2000, "mandrill", false, true);
+    BankAccount zazuAcc = new BankAccount("Zazu", 6000, "hornbill", false, true);
     accounts.add(simbaAcc);
     accounts.add(mufasaAcc);
     accounts.add(scarAcc);
