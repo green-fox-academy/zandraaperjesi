@@ -6,6 +6,6 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<p th:text="${simbaAcc.name} + ', ' + ${simbaAcc.balance} + ', ' + ${simbaAcc.animalType}"></p>
+<p th:text="${simbaAcc.name} + ', ' + ${#numbers.formatDecimal(simbaAcc.balance,1, 2, 'POINT')} + ', ' + ${simbaAcc.animalType}"></p>
 </body>
 </html>
