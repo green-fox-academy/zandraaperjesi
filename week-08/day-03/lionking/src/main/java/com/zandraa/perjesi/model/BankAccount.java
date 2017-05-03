@@ -9,4 +9,5 @@ public class BankAccount {
   String name;
   long balance;
   String animalType;
+  boolean isKing;
 }

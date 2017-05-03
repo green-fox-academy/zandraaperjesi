@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<ul th:each="account : ${accounts}">
+    <li th:if="${account.isKing()} == true" style = "color: gold;" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></li>
+    <li th:unless="${account.isKing()} == true" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></li>
+</ul>
+</body>
+</html>
