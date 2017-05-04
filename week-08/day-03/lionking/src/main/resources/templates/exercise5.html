@@ -7,8 +7,10 @@
 </head>
 <body>
 <p th:each="account : ${accounts}">
-    <span th:if="${account.isKing()} == true" style = "color: gold;" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType}"></span>
-    <span th:unless="${account.isKing()} == true" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${account.balance} + ' ' + ${account.animalType} + ' '"></span><span th:text="(${account.isGood()} == true) ? 'good one' : 'bad guy' "></span>
+    <span th:if="${account.isKing()} == true" style = "color: gold;" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${#numbers.formatDecimal(account.balance,1, 2, 'POINT')} + ' Zebra, ' + ' ' + ${account.animalType}"></span>
+    <span th:unless="${account.isKing()} == true" th:text="${accountStat.index + 1} + ' ' + ${account.name} + ' ' + ${#numbers.formatDecimal(account.balance,1, 2, 'POINT')} + ' Zebra, ' + ' ' + ${account.animalType} + ' '"></span>
+    <span th:if="${account.isKing()} == true" style = "color: gold;" th:text="(${account.isGood()} == true) ? 'good one' : 'bad guy' "></span>
+    <span th:unless="${account.isKing()} == true" th:text="(${account.isGood()} == true) ? 'good one' : 'bad guy' "></span>
 </p>
 </body>
 </html>
