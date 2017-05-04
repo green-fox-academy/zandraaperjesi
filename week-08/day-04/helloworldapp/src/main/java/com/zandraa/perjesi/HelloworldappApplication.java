@@ -10,6 +10,9 @@ public class HelloworldappApplication implements CommandLineRunner{
   @Autowired
   HelloWorld hw;
 
+  @Autowired
+  RedColor red;
+
   public static void main(String[] args) {
     SpringApplication.run(HelloworldappApplication.class, args);
   }
@@ -18,5 +21,6 @@ public class HelloworldappApplication implements CommandLineRunner{
   public void run(String... args) throws Exception {
     hw.setMessage("Hello, world!");
     hw.getMessage();
+    red.printColor();
   }
 }
