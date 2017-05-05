@@ -25,9 +25,10 @@ public class MainController {
     return "nutritionStore";
   }
 
-  @RequestMapping("/add")
-  public String add(@RequestParam("food") String param) throws InterruptedException {
-    fox.tricks.add(new Trick(param));
+  @RequestMapping("/changeFood")
+  public String add(@RequestParam("food") String food, @RequestParam("drink") String drink) throws InterruptedException {
+    fox.setFood(food);
+    fox.setDrink(drink);
     return "redirect:/";
   }
 }

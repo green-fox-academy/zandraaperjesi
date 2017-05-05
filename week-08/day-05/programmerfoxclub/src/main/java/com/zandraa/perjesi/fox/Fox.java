@@ -22,4 +22,12 @@ public class Fox {
     this.food = "food";
     this.drink = "drink";
   }
+
+  public void setFood(String s) {
+    this.food = s;
+  }
+
+  public void setDrink(String s) {
+    this.drink = s;
+  }
 }
