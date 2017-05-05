@@ -11,12 +11,14 @@ import java.util.List;
 public class Fox {
   String name;
   public TrickList tricks;
+  //public UnlearnedTricks newTricks;
   String food;
   String drink;
 
   public Fox() {
     this.name = "Mr. Green";
     this.tricks = new TrickList();
+    //this.newTricks = new UnlearnedTricks();
     Trick trick1 = new Trick("trick one");
     tricks.add(trick1);
     this.food = "food";
