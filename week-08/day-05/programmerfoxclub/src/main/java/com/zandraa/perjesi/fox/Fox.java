@@ -10,13 +10,13 @@ import java.util.List;
 @Setter
 public class Fox {
   String name;
-  List<Trick> tricks;
+  public TrickList tricks;
   String food;
   String drink;
 
   public Fox() {
     this.name = "Mr. Green";
-    this.tricks = new ArrayList<>();
+    this.tricks = new TrickList();
     Trick trick1 = new Trick("trick one");
     tricks.add(trick1);
     this.food = "food";

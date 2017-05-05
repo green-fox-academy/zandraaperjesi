@@ -10,9 +10,9 @@
     <li><a href="nutritionStore.html">Nutrition Store</a></li>
 </ul>
 <img src="greenfox.png"/>
-<p>This is <span th:text="${fox.name}">Mr. Fox.</span> Currently living on <span th:text="${fox.food}">pizza</span> and <span th:text="${fox.drink}">lemonade</span>. He knows <span th:text="${fox.tricks.size()}">2</span> tricks.</p>
+<p>This is <span th:text="${fox.name}">Mr. Fox.</span> Currently living on <span th:text="${fox.food}">pizza</span> and <span th:text="${fox.drink}">lemonade</span>. He knows <span th:text="${fox.tricks.list.size()}">2</span> tricks.</p>
 <h1>Known tricks</h1>
-<ul th:if="${not #lists.isEmpty(fox.tricks)}" th:each="trick : ${fox.tricks}">
+<ul th:if="${not #lists.isEmpty(fox.tricks.list)}" th:each="trick : ${fox.tricks.list}">
     <li th:text="${trick.name}">write HTML</li>
 </ul>
 <p th:if="${#lists.isEmpty(fox.tricks)}">Your fox knows no tricks yet.</p>

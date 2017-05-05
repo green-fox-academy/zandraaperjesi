@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrickList {
-  List<Trick> list = new ArrayList<>();
+  public List<Trick> list = new ArrayList<>();
 
   public List<Trick> getTricks() {
     return list;
