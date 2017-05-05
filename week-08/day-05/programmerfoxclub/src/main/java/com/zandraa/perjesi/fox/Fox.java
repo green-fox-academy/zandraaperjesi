@@ -10,15 +10,15 @@ import java.util.List;
 @Setter
 public class Fox {
   String name;
-  List<String> tricks;
+  List<Trick> tricks;
   String food;
   String drink;
 
   public Fox() {
     this.name = "Mr. Green";
     this.tricks = new ArrayList<>();
-    String trick1 = "trick1";
-    //tricks.add(trick1);
+    Trick trick1 = new Trick("trick one");
+    tricks.add(trick1);
     this.food = "food";
     this.drink = "drink";
   }
