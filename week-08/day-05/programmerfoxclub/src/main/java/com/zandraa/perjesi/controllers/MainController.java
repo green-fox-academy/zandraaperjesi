@@ -10,9 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
   @Autowired
   Fox fox;
+
   @RequestMapping("/")
   public String index(Model model) {
     model.addAttribute("fox", fox);
     return "index";
+  }
+
+  @RequestMapping("/nutritionStore")
+  public String nutritionStore(Model model) {
+    model.addAttribute("fox", fox);
+    return "nutritionStore";
   }
 }
