@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>todo</title>
+</head>
+<body>
+    <h1>Todos for today:</h1>
+    <ul >
+        <li th:each="todo : ${todos}" th:text="${todo}">asdasd</li>
+    </ul>
+
+    <table>
+        <tr>
+            <th><h3>ID</h3></th>
+            <th><h3>ACTION</h3></th>
+            <th><h3>DONE</h3></th>
+            <th><h3>URGENT</h3></th>
+        </tr>
+        <tr th:each="todo : ${todos}">
+            <td th:text="${todo.getIdd()}">1</td>
+            <td th:text="${todo}">Title ..</td>
+            <td th:text="${todo.getIsDone()}">Text ...</td>
+            <td th:text="${todo.getIsUrgent()}">Text ...</td>
+        </tr>
+    </table>
+</body>
+</html>
