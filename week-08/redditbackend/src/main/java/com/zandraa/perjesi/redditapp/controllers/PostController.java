@@ -5,10 +5,7 @@ import com.zandraa.perjesi.redditapp.models.Post;
 import com.zandraa.perjesi.redditapp.models.PostList;
 import com.zandraa.perjesi.redditapp.services.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PostController {
@@ -28,5 +25,21 @@ public class PostController {
     Post createThisPost = new Post(newPost.getTitle(), newPost.getHref());
     postRepository.save(createThisPost);
     return createThisPost;
+  }
+
+  @RequestMapping(value = "/posts/{id}/upvote", method = RequestMethod.PUT)
+  public Post upVote(@PathVariable("id") long id) {
+    Post upvotePost = postRepository.findOne(id);
+    upvotePost.setScore(upvotePost.getScore() + 1);
+    postRepository.save(upvotePost);
+    return upvotePost;
+  }
+
+  @RequestMapping(value = "/posts/{id}/downvote", method = RequestMethod.PUT)
+  public Post downVote(@PathVariable("id") long id) {
+    Post downvotePost = postRepository.findOne(id);
+    downvotePost.setScore(downvotePost.getScore() - 1);
+    postRepository.save(downvotePost);
+    return downvotePost;
   }
 }
