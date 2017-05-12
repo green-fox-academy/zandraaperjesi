@@ -7,6 +7,7 @@ import com.zandraa.perjesi.redditapp.services.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 public class PostController {
 
@@ -41,5 +42,12 @@ public class PostController {
     downvotePost.setScore(downvotePost.getScore() - 1);
     postRepository.save(downvotePost);
     return downvotePost;
+  }
+
+  @RequestMapping(value = "/posts/{id}", method = RequestMethod.DELETE)
+  public Post deletePost(@PathVariable("id") long id) {
+    Post deletePost = postRepository.findOne(id);
+    postRepository.delete(id);
+    return deletePost;
   }
 }
