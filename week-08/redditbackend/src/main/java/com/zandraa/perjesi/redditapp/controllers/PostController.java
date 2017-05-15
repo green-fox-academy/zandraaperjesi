@@ -22,8 +22,8 @@ public class PostController {
   }
 
   @RequestMapping(value = "/posts", method = RequestMethod.POST)
-  public Post addPost(@RequestBody InputData newPost) {
-    Post createThisPost = new Post(newPost.getTitle(), newPost.getHref());
+  public Post addPost(@RequestBody InputData newPost, @RequestHeader String owner) {
+    Post createThisPost = new Post(newPost.getTitle(), newPost.getHref(), owner);
     postRepository.save(createThisPost);
     return createThisPost;
   }

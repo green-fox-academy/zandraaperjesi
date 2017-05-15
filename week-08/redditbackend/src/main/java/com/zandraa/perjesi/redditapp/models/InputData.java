@@ -3,6 +3,7 @@ package com.zandraa.perjesi.redditapp.models;
 public class InputData {
   private String title;
   private String href;
+  private String owner;
 
   public InputData() {}
 
@@ -20,5 +21,9 @@ public class InputData {
 
   public void setHref(String href) {
     this.href = href;
+  }
+
+  public String getOwner() {
+    return owner;
   }
 }

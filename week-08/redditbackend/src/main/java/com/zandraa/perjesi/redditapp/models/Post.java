@@ -15,6 +15,7 @@ public class Post {
   private String href;
   private long timestamp;
   private long score;
+  private String owner;
 
   public Post() {}
 
@@ -26,12 +27,21 @@ public class Post {
     this.timestamp = timestamp;
   }
 
-  public Post(String title, String href) {
+  public Post(String title, String href, String owner) {
+    this.owner = owner;
     this.title = title;
     this.href = href;
     this.timestamp = new Date().getTime();
+    this.owner = owner;
   }
 
+  public String getOwner() {
+    return owner;
+  }
+
+  public void setOwner(String owner) {
+    this.owner = owner;
+  }
   public long getId() {
     return id;
   }
