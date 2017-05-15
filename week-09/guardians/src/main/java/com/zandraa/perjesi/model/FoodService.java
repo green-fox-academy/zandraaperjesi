@@ -16,14 +16,14 @@ public class FoodService {
     return foodRepository.getAll();
   }
 
-  public List<Food> addFood(String name, int calorie, int amount) {
+  public List<Food> addFood(String name, int amount, int calorie) {
     return foodRepository.addFood(new Food(name, calorie, amount));
   }
 
   public List<Food> deleteFood(String name) {
     return foodRepository.deleteFood(name);
   }
-  
+
   public List<Food> changeAmount(String name, int amount) {
     return foodRepository.changeAmount(name, amount);
   }

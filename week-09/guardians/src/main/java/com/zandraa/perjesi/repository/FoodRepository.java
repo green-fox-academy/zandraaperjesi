@@ -22,7 +22,7 @@ public class FoodRepository {
   public List<Food> deleteFood(String name) {
     List<Food> buffer = new ArrayList<>();
     for (Food food : foodList) {
-      if(food.getName() != name) {
+      if(!food.getName().equals(name)) {
         buffer.add(food);
       }
     }
@@ -37,7 +37,7 @@ public class FoodRepository {
 
   public List<Food> changeAmount(String name, int amount) {
     for (Food food : foodList) {
-      if (food.getName() == name) {
+      if (food.getName().equals(name)) {
         food.setAmount(amount);
       }
     }
