@@ -9,13 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import java.nio.charset.Charset;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -26,7 +24,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @SpringBootTest(classes = GuardiansApplication.class)
 @WebAppConfiguration
 @EnableWebMvc
-public class GuardianControllerTest {
+public class YonduControllerTest {
 
   private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
           MediaType.APPLICATION_JSON.getSubtype(),
@@ -44,17 +42,17 @@ public class GuardianControllerTest {
 
   @Test
   public void yourFirstTest() throws Exception{
-    mockMvc.perform(get("/groot?message=asdasd"))
+    mockMvc.perform(get("/yondu?distance=100.0&time=10.0"))
             .andExpect(status().isOk())
             .andDo(print())
-            .andExpect(jsonPath("$.message").value("asdasd"));
+            .andExpect(jsonPath("$.speed").value(10.0));
   }
 
   @Test
   public void grootWithoutParamTest() throws Exception{
-    mockMvc.perform(get("/groot"))
+    mockMvc.perform(get("/yondu"))
             .andExpect(status().is(418))
             .andDo(print())
-            .andExpect(jsonPath("$.error").value("I am Groot!"));
+            .andExpect(jsonPath("$.error").value("No params!"));
   }
 }
