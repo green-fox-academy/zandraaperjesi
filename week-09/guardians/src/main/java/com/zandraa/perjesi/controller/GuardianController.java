@@ -1,21 +1,19 @@
 package com.zandraa.perjesi.controller;
 
+import com.zandraa.perjesi.model.ErrorMessage;
 import com.zandraa.perjesi.model.GrootService;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GuardianController {
 
   @ExceptionHandler(Exception.class)
   public ErrorMessage errorHandler() {
-    return new ErrorMessage("Please provide an number!");
+    return new ErrorMessage("I am Groot!");
   }
 
   @GetMapping("/groot")
-  public GrootService grootSpeaks(@RequestPart("message") String message) {
-    return new GrootService();
+  public GrootService grootSpeaks(@RequestParam("message") String message) {
+    return new GrootService(message);
   }
 }
