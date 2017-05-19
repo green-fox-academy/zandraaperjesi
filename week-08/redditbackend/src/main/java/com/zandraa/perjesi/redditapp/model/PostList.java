@@ -1,4 +1,4 @@
-package com.zandraa.perjesi.redditapp.models;
+package com.zandraa.perjesi.redditapp.model;
 
 public class PostList {
   private Iterable<Post> posts;

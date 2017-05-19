@@ -1,4 +1,4 @@
-package com.zandraa.perjesi.redditapp.models;
+package com.zandraa.perjesi.redditapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +32,6 @@ public class Post {
     this.title = title;
     this.href = href;
     this.timestamp = new Date().getTime();
-    this.owner = owner;
   }
 
   public String getOwner() {
@@ -42,6 +41,7 @@ public class Post {
   public void setOwner(String owner) {
     this.owner = owner;
   }
+
   public long getId() {
     return id;
   }
